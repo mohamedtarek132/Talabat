@@ -1,6 +1,6 @@
 package Talabat;
 
-public class User implements Cloneable {
+public class User implements Cloneable{
     private String first_name;
     private  String lastName;
     private  String email;
@@ -99,11 +99,16 @@ public class User implements Cloneable {
         }
         try{
             if(found){
-               throw new SameEmailAsAnotherUserException(email);
+               throw new SameEmailException();
             }
+            new_users = new User[users.length + 1];
+            System.arraycopy(users, 0, new_users, 0, users.length);
+            new_users[users.length].email = email;
+            new_users[users.length].password = password;
+            return new_users;
         }
-        catch (SameEmailAsAnotherUserException seaue){
-
+        catch(SameEmailException exp){
+            System.out.println(exp.getMessage());
         }
         return users;
     }
@@ -118,7 +123,32 @@ public class User implements Cloneable {
         this.password = null;
         this.phoneNumber = 0;
     }
-    public User clone(){
-
+    public void signIn(String email, String password, User []users) throws EmailOrPasswordException{
+        boolean found = false;
+        int index = -1;
+        for(int i = 0; i < users.length; i++){
+            if(email.equals(users[i].getEmail()) && password.equals(users[i].getPassword())){
+                found = true;
+                index = i;
+                break;
+            }
+        }
+        if(!found){
+            throw new EmailOrPasswordException();
+        }
+        this.address = users[index].address.clone();
+        this.country = users[index].country;
+        this.email = users[index].email;
+        this.gender = users[index].gender;
+        this.id = users[index].id;
+        this.first_name = users[index].first_name;
+        this.lastName = users[index].lastName;
+        this.password = users[index].password;
+        this.phoneNumber = users[index].phoneNumber;
+    }
+    public Object clone() throws CloneNotSupportedException {
+        User clone = (User) super.clone();
+        clone.address = this.address.clone();
+        return clone;
     }
 }
