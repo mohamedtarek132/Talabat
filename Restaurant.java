@@ -116,6 +116,14 @@ public class Restaurant {
         return (averageReview/counter);
     }
 
+    public int[] displayNumberOfReviews(){
+        int[] reviewsNumber = new int[5];
+        for (Review review:reviews){
+            reviewsNumber[review.getRating()-1] += 1;
+        }
+        return reviewsNumber;
+    }
+
     public Item searchForItem(String itemName){
         boolean check = false;
         for (Item item: menu){
