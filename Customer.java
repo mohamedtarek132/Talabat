@@ -1,5 +1,5 @@
-import java.time.LocalDate;
 package Talabat;
+import java.time.LocalDate;
 
 public class Customer extends User
 {
