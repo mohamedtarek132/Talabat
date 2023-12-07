@@ -1,4 +1,4 @@
-package OOP;
+package Talabat;
 
 public class Wallet {
     private User user;
