@@ -1,12 +1,14 @@
 package Talabat;
 
+import java.util.ArrayList;
+
 public class Restaurant {
     private String name;
     private String phoneNumber;
     private int restaurantID;
     private String [] address;
-    private Item [] menu;
-    private Review [] reviews;
+    private ArrayList<Item> menu;
+    private ArrayList<Review> reviews;
     private int deliveryDuration;
     private String openingHour;
     private String closingHour;
@@ -45,19 +47,19 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Item[] getMenu() {
+    public ArrayList<Item> getMenu() {
         return menu;
     }
 
-    public void setMenu(Item[] menu) {
+    public void setMenu(ArrayList<Item> menu) {
         this.menu = menu;
     }
 
-    public Review[] getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(Review[] reviews) {
+    public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
 
