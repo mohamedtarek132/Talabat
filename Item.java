@@ -1,3 +1,5 @@
+package Talabat;
+
 import java.util.ArrayList;
 
 public class Item {
@@ -18,7 +20,6 @@ public class Item {
     private float averageReview;
 
 
-
     public Item(String name, String id, String description, int price, String category) {
         this.name = name;
         this.id = id;
@@ -27,7 +28,7 @@ public class Item {
         this.category = category;
         this.numberOfSales = 0;
         this.quantityInOrder = 0;
-        this.averageReview=0f;
+        this.averageReview = 0f;
         this.availability = true;
         this.toppings = new ArrayList<>();
         this.sideItems = new ArrayList<>();
@@ -149,15 +150,18 @@ public class Item {
             }
         }
     }
+
     public void incrementNumberOfSales() {
         numberOfSales++;
     }
+
     public void calculateAverageReview(Review review) {
         float totalReviews = averageReview * numberOfSales;
         totalReviews += review.getRating();
         numberOfSales++;
         averageReview = totalReviews / numberOfSales;
     }
+
     public void addSideItem(Item sideItem) {
         sideItems.add(sideItem);
     }
@@ -169,5 +173,18 @@ public class Item {
                 break;
             }
         }
+    }
+    public String displayItem() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", price=" + price +
+                ", reviews=" + reviews +
+                ", numberOfSales=" + numberOfSales +
+                ", description='" + description + '\'' +
+                ", availability=" + availability +
+                ", category='" + category + '\'' +
+                ", averageReview=" + averageReview +
+                '}';
     }
 }
