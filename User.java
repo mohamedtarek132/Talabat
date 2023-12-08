@@ -1,32 +1,47 @@
 package Talabat;
-import java.util.ArrayList;
-public class User{
-    private String first_name;
-    private  String lastName;
-    private  String email;
-    private  String password;
-    private  String gender;
-    private  int phoneNumber;
-    private  ArrayList<String> address;
-    private  String country;
-    private  String id;
-    private ArrayList<CreditCard> creditCards;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import java.util.ArrayList;
+
+public class User {
+    private String first_name;
+    private String lastName;
+    private String email;
+    private String password;
+    private String gender;
+    private long phoneNumber;
+    private ArrayList<String> address;
+    private String country;
+    private String id;
+    private ArrayList<CreditCard> creditCards = new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
+
+    @FXML
     public String getFirst_name() {
         return first_name;
     }
+
+    @FXML
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
 
+    @FXML
+
     public String getLastName() {
         return lastName;
     }
 
+    @FXML
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    @FXML
 
     public String getEmail() {
         return email;
@@ -36,58 +51,86 @@ public class User{
         this.email = email;
     }
 
+    @FXML
+
     public String getPassword() {
         return password;
     }
+
+    @FXML
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    @FXML
+
     public String getGender() {
         return gender;
     }
+
+    @FXML
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int getPhoneNumber() {
+    @FXML
+
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    @FXML
+
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @FXML
 
     public ArrayList<String> getAddress() {
         return address;
     }
 
+    @FXML
+
     public void setAddress(ArrayList<String> address) {
         this.address = address;
     }
+
+    @FXML
 
     public String getCountry() {
         return country;
     }
 
+    @FXML
+
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @FXML
 
     public String getId() {
         return id;
     }
 
+    @FXML
+
     public void setId(String id) {
         this.id = id;
     }
-    public void addAddress(String address){
+
+    @FXML
+
+    public void addAddress(String address) {
         this.address.add(address);
     }
-    public void signUp(String email, String password, ArrayList<User> users){
-        User [] new_users;
+
+    @FXML
+    public void signUp(String first_name, String lastName, String email, String password, String gender, long phoneNumber, String country, String id) throws SameEmailException,EmptyFieldException {
         boolean found = false;
         for (User user : users) {
             if (email.equals(user.getEmail())) {
@@ -95,19 +138,28 @@ public class User{
                 break;
             }
         }
-        try{
-            if(found){
-               throw new SameEmailException();
-            }
-            users.add(new User());
-            users.get(users.size() - 1).setEmail(email);
-            users.get(users.size() - 1).setPassword(password);
+        if (found) {
+            throw new SameEmailException();
+        } else if(first_name == null){
+           throw new EmptyFieldException("first name");
+        }else if (lastName == null){
+            throw new EmptyFieldException("last name");
+        }else if(password == null){
+            throw new EmptyFieldException("password");
+        } else if (gender == null) {
+            throw new EmptyFieldException("gender");
+        } else if (phoneNumber == 0) {
+            throw new EmptyFieldException("phone number");
+        } else if (country == null) {
+            throw new EmptyFieldException("country");
         }
-        catch(SameEmailException exp){
-            System.out.println(exp.getMessage());
-        }
+        users.add(new User());
+        users.get(users.size() - 1).setEmail(email);
+        users.get(users.size() - 1).setPassword(password);
+
     }
-    public void logOut(){
+
+    public void logOut() {
         this.address = null;
         this.country = null;
         this.email = null;
@@ -118,17 +170,19 @@ public class User{
         this.password = null;
         this.phoneNumber = 0;
     }
-    public void signIn(String email, String password, ArrayList<User> users) throws EmailOrPasswordException{
+
+    @FXML
+    public void signIn(String email, String password) throws EmailOrPasswordException {
         boolean found = false;
         int index = -1;
-        for(int i = 0; i < users.size(); i++){
-            if(email.equals(users.get(i).getEmail()) && password.equals(users.get(i).getPassword())){
+        for (int i = 0; i < users.size(); i++) {
+            if (email.equals(users.get(i).getEmail()) && password.equals(users.get(i).getPassword())) {
                 found = true;
                 index = i;
                 break;
             }
         }
-        if(!found){
+        if (!found) {
             throw new EmailOrPasswordException();
         }
         this.address = users.get(index).address;
@@ -141,19 +195,33 @@ public class User{
         this.password = users.get(index).password;
         this.phoneNumber = users.get(index).phoneNumber;
     }
-    public ArrayList<Item> searchForItem(String name,ArrayList<Restaurant> restaurants){
+
+    public ArrayList<Item> searchForItem(String name, ArrayList<Restaurant> restaurants) {
         ArrayList<Item> items = new ArrayList<>();
-        for(Restaurant restaurant: restaurants){
-            for(Item item: restaurant.getMenu()){
-                if(item.getName().contains(name)){
+        for (Restaurant restaurant : restaurants) {
+            for (Item item : restaurant.getMenu()) {
+                if (item.getName().contains(name)) {
                     items.add(item);
                 }
             }
         }
         return items;
     }
-    public void addCreditCard(String number, int cvv, String expiry_date, String cardHolder){
+
+    public void addCreditCard(String number, int cvv, String expiry_date, String cardHolder) {
         CreditCard newCreditCard = new CreditCard(number, cvv, cardHolder, expiry_date);
         this.creditCards.add(newCreditCard);
+    }
+
+    public static void setUsers(int index, String first_name, String lastName, String email, String password, String gender, long phoneNumber, String country, String id) {
+        users.add(new User());
+        users.get(index).first_name = first_name;
+        users.get(index).lastName = lastName;
+        users.get(index).email = email;
+        users.get(index).password = password;
+        users.get(index).gender = gender;
+        users.get(index).phoneNumber = phoneNumber;
+        users.get(index).country = country;
+        users.get(index).id = id;
     }
 }
