@@ -1,18 +1,20 @@
-package Talabat;
 
 
 public class Admin extends User {
-public  Resturant  deleteResturant(Resturant resturant){
-int restId;
+public  Resturant  deleteResturant (Resturant resturant) {
+    int restId;
+    ArrayList<Restaurant> newRest = new ArrayList<>[];
+
     System.out.println("Enter resturant id to delete ");
-Resturant[] newRest = new Resturant[resturant.length];
-    for (i:resturant) {
-        if (resturant.shopId == restId)
-        {
-           resturant[i]=null;
-           break;
+
+    for (Restaurant r : resturant) {
+
+        if (r.shopId == restId) {
+            r = null;
+            break;
         }
     }
+
     for (int i = 0; i < resturant.length; i++) {
         if(resturant[i]==null)
             continue;
@@ -22,49 +24,49 @@ Resturant[] newRest = new Resturant[resturant.length];
     return newRest;
 }
 
-public Resturant setNewResturant()     //this method is a parameter for addResturantToResturants();
+public Restaurant setNewRestaurant()     //this method is a parameter for addRestaurantToRestaurants();
 {
-    System.out.println("Enter resturant name ");             //
-    System.out.println("Enter resturant phone number ");     //
-    System.out.println("Enter resturant Adress ");           //
-    System.out.println("Enter resturant category ");           //this will be in textbox
-    System.out.println("Enter resturant  ");                 //
-    System.out.println("Enter resturant name ");             //
-    System.out.println("Enter resturant name ");             //
+    System.out.println("Enter restaurant name ");             //
+    System.out.println("Enter restaurant phone number ");     //
+    System.out.println("Enter restaurant Adress ");           //
+    System.out.println("Enter restaurant category ");           //this will be in textbox
+    System.out.println("Enter restaurant  ");                 //
+    System.out.println("Enter restaurant name ");             //
+    System.out.println("Enter restaurant name ");             //
 
-    Resturant resturant = new resturant(name,phoneNumber,category,etc);
-    return resturant;
+    Restaurant restaurant = new Restaurant();
+    return restaurant;
 }
 
-public Resturant addResturantToResturants(Resturant[] allResturants,Resturant newResturant,String,String){
+public Restaurant addRestaurantToRestaurants(ArrayList<Restaurant> allRestaurants,Restaurant newRestaurant){
 
-    for (i:allResturants) {
-        if(allResturants[i] == null)
+    for (Restaurant r:allRestaurants) {
+        if(r == null)
         {
-            allResturants[i]=newResturant;
+            r=newRestaurant;
         }
     }
-    return allResturants;
+    return allRestaurants;
 }
 
 
-public  Item addItemToMenu( Resturant resturant,int resturantId,String itemName,int itemPrice)
+public  Item addItemToMenu( Restaurant restaurant,int restaurantId,String itemName,int itemPrice)
 {
- for (i :resturant) {
-  if(resturant[i].shopId == resturantId)
+ for (Restaurant i :restaurant) {
+  if(i.shopId == restaurantId)
   {
    Item newItem = new Item(itemName,itemPrice);
-   Item[] arrOfItem = new Item[resturant.menu.length+1];
+   Item[] arrOfItem = new Item[restaurant.menu.length+1];
       for (int i = 0; i < arrOfItem.length; i++) {
-          arrOfItem[i]= resturant.menu[i];
+          arrOfItem[i]= restaurant.menu[i];
       }
       arrOfItem[arrOfItem.length-1] = newItem;
-   resturant.menu = arrOfItem;
+   restaurant.menu = arrOfItem;
    break;
   }
 
  }
- return resturant.menu;
+ return restaurant.menu;
 
 }
 
@@ -84,14 +86,14 @@ public Item removeItemFromMenu(Item[] item , int itemIndex)
 return newItem;
 }
 
- public  void displayAllResturants ()
+ public  void displayAllRestaurants ()
  {
 int j=0;
-   for(i : resturant)
+   for(Restaurant i : restaurant)
    {
-       if(resturant[i] == null)
+       if(restaurant[i] == null)
            continue;
-       System.out.println((j+1) +" "+ resturant[i].name);  //this will be in textbox
+       System.out.println((j+1) +" "+ restaurant[i].name);  //this will be in textbox
        j++;
    }
  }
@@ -104,27 +106,27 @@ public  int updateItemPrice(int newPrice)
   return newPrice;
 }
 
-public  void displayResturantMenu(Resturant)
+public  void displayRestaurantMenu(Restaurant)
 {
- for (i : resturant.menu)
+    int j =0;
+ for (Item i : restaurant.menu)
   {
-  System.out.println((i+1)+" "+resturant.menu[i].name+" Price -> " resturant.menu[i].price);//this will be in textbox
+  System.out.println((j+1)+"- "+i.name+" Price -> "i.price);//this will be in textbox
   }
 
 }
 
 
 
-public  String DisplayMostRatedResturant(Resturant[] )
+public  Void  DisplayMostRatedRestaurant(ArrayList<Restaurant> restaurant )
 {
- int maxRate=0;
- int resturantNumnber =0;
- for( i : resturant)
- {
-   if(resturant[i].review.rating >= maxRate)
-   { maxRate = resturant[i].review.rating;
-    resturantNumnber=i;
-   }
- }
- return resturant[i].name;
+    int i=0;
+
+    Collection.sort(restaurant.review.rating);
+
+    for(Restaurant r : restaurant)
+     {
+       System.out.println((i+1)+"- "+r.name);
+     }
+
 }
