@@ -1,6 +1,5 @@
 package Talabat;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.util.ArrayList;
@@ -130,8 +129,11 @@ public class User {
     }
 
     @FXML
-    public void signUp(String first_name, String lastName, String email, String password, String gender, long phoneNumber, String country, String id) throws SameEmailException,EmptyFieldException {
+    public void signUp(String first_name, String lastName, String email, String password,
+                       String gender, String phoneNumber, String country, String address) throws SignUpException {
         boolean found = false;
+        String errors = "";
+        long phoneNumber1 = 0;
         for (User user : users) {
             if (email.equals(user.getEmail())) {
                 found = true;
@@ -139,24 +141,56 @@ public class User {
             }
         }
         if (found) {
-            throw new SameEmailException();
-        } else if(first_name == null){
-           throw new EmptyFieldException("first name");
-        }else if (lastName == null){
-            throw new EmptyFieldException("last name");
-        }else if(password == null){
-            throw new EmptyFieldException("password");
-        } else if (gender == null) {
-            throw new EmptyFieldException("gender");
-        } else if (phoneNumber == 0) {
-            throw new EmptyFieldException("phone number");
-        } else if (country == null) {
-            throw new EmptyFieldException("country");
+            errors+="same email";
+        }
+        if(first_name.isEmpty()){
+            errors+="first name";
+        }
+        if (lastName.isEmpty()){
+            errors+="last name";
+        }
+        if(password.isEmpty()){
+            errors+="password";
+        }
+        if (gender.isEmpty()) {
+            errors+="gender";
+        }
+        if (phoneNumber.isEmpty() ) {
+            errors+="phone number";
+        } else {
+            try{
+                phoneNumber1 = Long.parseLong(phoneNumber);
+            }catch (NumberFormatException exception){
+                errors+="char in number";
+            }
+        }
+        if (country.isEmpty()) {
+            errors+="country";
+        }
+        if (email.isEmpty()) {
+            errors+="email";
+        }
+        if (address.isEmpty()){
+            errors+="address";
+        }
+        if (!errors.isEmpty()){
+            throw new SignUpException(errors);
         }
         users.add(new User());
         users.get(users.size() - 1).setEmail(email);
         users.get(users.size() - 1).setPassword(password);
-
+        users.get((users.size() - 1)).setLastName(lastName);
+        users.get((users.size() - 1)).setCountry(country);
+        users.get((users.size() - 1)).setGender(gender);
+        users.get((users.size() - 1)).setFirst_name(first_name);
+        users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
+        this.country = country;
+        this.email = email;
+        this.gender = gender;
+        this.first_name = first_name;
+        this.lastName = lastName;
+        this.password = password;
+        this.phoneNumber = phoneNumber1;
     }
 
     public void logOut() {

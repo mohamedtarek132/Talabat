@@ -61,7 +61,7 @@
             </font>
         </Text>
         <TextField fx:id="country" layoutX="380.0" layoutY="478.0" prefHeight="25.0" prefWidth="220.0" />
-        <Button fx:id="confirm" layoutX="338.0" layoutY="524.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="122.0" text="Confirm">
+        <Button fx:id="confirm" layoutX="339.0" layoutY="531.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="122.0" text="Confirm">
             <font>
                 <Font size="18.0" />
             </font>

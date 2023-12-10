@@ -1,8 +1,9 @@
 package Talabat;
 
-public class Payment {
-
-    private double Total_price;
+public class Payment
+{
+   
+    private  double  Total_price;
     private String Payment_Method;
     private String Transaction_id;
     private String Payment_Status; // it`s static because it`s changeable
