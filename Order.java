@@ -3,7 +3,7 @@ package Talabat;
 public class Order {
     private Cart cart;
     private String paymentMethod;
-    private Payment paymentStatus;
+    private Payment payment;
     private String orderStatus;
     private String orderTime;
     private String preferredDeliveryTime;
@@ -27,12 +27,12 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public Payment getPaymentStatus() {
-        return paymentStatus;
+    public Payment getPayment() {
+        return payment;
     }
 
-    public void setPaymentStatus(Payment paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public String getOrderStatus() {
