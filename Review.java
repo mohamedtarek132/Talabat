@@ -2,9 +2,9 @@ package Talabat;
 
 public class Review {
     private int rating;
-    private String Comment ;
+    private String Comment;
     private String User_id;
-    private String Date ;
+    private String Date;
 
     public void setRating(int rating) {
         this.rating = rating;
@@ -23,7 +23,7 @@ public class Review {
     }
 
     public int getRating() {
-        
+
         return rating;
     }
 

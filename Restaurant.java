@@ -6,7 +6,7 @@ public class Restaurant {
     private String name;
     private String phoneNumber;
     private int restaurantID;
-    private String [] address;
+    private String[] address;
     private ArrayList<Item> menu;
     private ArrayList<Review> reviews;
     private int deliveryDuration;
@@ -103,33 +103,33 @@ public class Restaurant {
         this.deliveryFee = deliveryFee;
     }
 
-    public void displayMenu(){
-        for (Item item: menu) {
+    public void displayMenu() {
+        for (Item item : menu) {
             item.displayItem();
         }
     }
 
-    public float calculateAverageReview(){
+    public float calculateAverageReview() {
         float averageReview = 0, counter = 0;
-        for (Review review: reviews) {
+        for (Review review : reviews) {
             averageReview += review.getRating();
             counter += 1f;
         }
-        return (averageReview/counter);
+        return (averageReview / counter);
     }
 
-    public int[] displayNumberOfReviews(){
+    public int[] displayNumberOfReviews() {
         int[] reviewsNumber = new int[5];
-        for (Review review:reviews){
-            reviewsNumber[review.getRating()-1] += 1;
+        for (Review review : reviews) {
+            reviewsNumber[review.getRating() - 1] += 1;
         }
         return reviewsNumber;
     }
 
-    public Item searchForItem(String itemName){
+    public Item searchForItem(String itemName) {
         boolean check = false;
-        for (Item item: menu){
-            if (item.getName().equals(itemName)){
+        for (Item item : menu) {
+            if (item.getName().equals(itemName)) {
                 return item;
             }
         }

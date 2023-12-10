@@ -1,5 +1,4 @@
 
-
 public class Admin extends User {
 public  Resturant  deleteResturant (Resturant resturant) {
     int restId;
