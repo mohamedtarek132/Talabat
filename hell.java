@@ -19,6 +19,7 @@ public class hell extends Application {
     public static void main(String[] args) {
         launch(args);
         AnchorPane d = new AnchorPane();
+        System.out.println("yayyy23");
     }
 
     @Override
@@ -29,7 +30,7 @@ public class hell extends Application {
                 int i = 0;
                 while (myReader.hasNextLine()) {
                     String[] data = myReader.nextLine().split(",");
-                    User.setUsers(i, data[0],data[1], data[2], data[3], data[4], Long.parseLong(data[5]), data[6], data[7]);
+                    User.setUsers(Integer.parseInt(data[0]),data[1], data[2], data[3], data[4], data[5],Long.parseLong(data[6]), data[7]);
                     i++;
                 }
                 myReader.close();
@@ -37,8 +38,7 @@ public class hell extends Application {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-            System.out.println(getClass().getResource("Sign_Up.fxml"));
-            Parent root = FXMLLoader.load(getClass().getResource("Sign_Up.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Sign_In.fxml"));
             Scene scene = new Scene(root, Color.LIGHTBLUE);
             primaryStage.setTitle("Hell");
             Text text = new Text();
@@ -48,6 +48,5 @@ public class hell extends Application {
 
             primaryStage.setScene(scene);
             primaryStage.show();
-
     }
 }

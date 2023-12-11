@@ -3,10 +3,15 @@ package Talabat;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class UserClassController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SignUpPageController implements Initializable {
     @FXML
     private TextField email;
     @FXML
@@ -16,15 +21,11 @@ public class UserClassController {
     @FXML
     private TextField password;
     @FXML
-    private TextField gender;
-    @FXML
     private TextField phoneNumber;
     @FXML
     private TextField address;
     @FXML
     private TextField country;
-    @FXML
-    private Text wrongEmail;
     @FXML
     private Text emailEmptyField;
     @FXML
@@ -41,22 +42,22 @@ public class UserClassController {
     private Text addressEmptyField;
     @FXML
     private Text countryEmptyField;
+    @FXML
+    private Text tying;
+    @FXML
+    private ChoiceBox<String> genderChoiceBox;
     private User user = new User();
     @FXML
     public void signUp(ActionEvent event){
-        boolean numberformatexception = false;
         String exception = "";
         long phoneNumber1 = 0;
         try {
-            user.signUp(firstName.getText(),lastName.getText(), email.getText(), password.getText(),gender.getText(),
+            user.signUp(firstName.getText(),lastName.getText(), email.getText(), password.getText(),genderChoiceBox.getValue(),
                     phoneNumber.getText(),country.getText(), address.getText());
-        }catch(NumberFormatException exception1){
-            phoneNumberEmptyField.setText("You can not enter characters here only numbers");
-
-            numberformatexception = true;
+            tying.setOpacity(1);
         }
-        catch (SignUpException emptyFieldException) {
-            exception = emptyFieldException.getMessage();
+        catch (SignUpException signUpException) {
+            exception = signUpException.getMessage();
         }
         if (exception.contains("first name")) {
             firstNameEmptyField.setOpacity(1);
@@ -84,17 +85,26 @@ public class UserClassController {
             genderEmptyField.setOpacity(0);
         }
         if (exception.contains("email")) {
+            emailEmptyField.setText("This field can't be empty!");
             emailEmptyField.setOpacity(1);
-        } else if (exception.contains("same email")){
+        } else if (exception.contains("@ or .com")) {
+            emailEmptyField.setText("Please enter a valid email!");
+            emailEmptyField.setOpacity(1);
+        }else if (exception.contains("same email")){
             emailEmptyField.setText("This email is used by another user!");
             emailEmptyField.setOpacity(1);
         }else {
             emailEmptyField.setOpacity(0);
         }
         if (exception.contains("phone number")) {
+            phoneNumberEmptyField.setText("This field can't be empty!");
             phoneNumberEmptyField.setOpacity(1);
         } else if (exception.contains("char in number")) {
             phoneNumberEmptyField.setText("You can not enter characters here only numbers");
+            phoneNumberEmptyField.setOpacity(1);
+        } else if (exception.contains("not a valid number")) {
+            phoneNumberEmptyField.setText("Please eneter a valid number");
+            phoneNumberEmptyField.setOpacity(1);
         } else {
             phoneNumberEmptyField.setOpacity(0);
         }
@@ -103,6 +113,14 @@ public class UserClassController {
         } else {
             addressEmptyField.setOpacity(0);
         }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        genderChoiceBox.getItems().addAll("Male", "Female");
+    }
+    public void switchTo(ActionEvent ae){
 
     }
 }

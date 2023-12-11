@@ -11,12 +11,12 @@ public class User {
     private String password;
     private String gender;
     private long phoneNumber;
-    private ArrayList<String> address;
+    private ArrayList<String> address = new ArrayList<>();
     private String country;
-    private String id;
+    private int id;
     private ArrayList<CreditCard> creditCards = new ArrayList<>();
     private static ArrayList<User> users = new ArrayList<>();
-
+    private static User user;
     @FXML
     public String getFirst_name() {
         return first_name;
@@ -112,13 +112,13 @@ public class User {
 
     @FXML
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     @FXML
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -152,7 +152,7 @@ public class User {
         if(password.isEmpty()){
             errors+="password";
         }
-        if (gender.isEmpty()) {
+        if (gender == null) {
             errors+="gender";
         }
         if (phoneNumber.isEmpty() ) {
@@ -160,6 +160,9 @@ public class User {
         } else {
             try{
                 phoneNumber1 = Long.parseLong(phoneNumber);
+                if (phoneNumber1 / (long)1000000000 !=1){
+                    errors+="not a valid number";
+                }
             }catch (NumberFormatException exception){
                 errors+="char in number";
             }
@@ -169,6 +172,8 @@ public class User {
         }
         if (email.isEmpty()) {
             errors+="email";
+        } else if (!email.contains("@")&& !email.contains(".com")) {
+            errors+="@ or .com";
         }
         if (address.isEmpty()){
             errors+="address";
@@ -184,6 +189,7 @@ public class User {
         users.get((users.size() - 1)).setGender(gender);
         users.get((users.size() - 1)).setFirst_name(first_name);
         users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
+        users.get((users.size() - 1)).addAddress(address);
         this.country = country;
         this.email = email;
         this.gender = gender;
@@ -191,6 +197,7 @@ public class User {
         this.lastName = lastName;
         this.password = password;
         this.phoneNumber = phoneNumber1;
+        this.getAddress().add(address);
     }
 
     public void logOut() {
@@ -198,7 +205,7 @@ public class User {
         this.country = null;
         this.email = null;
         this.gender = null;
-        this.id = null;
+        this.id = -1;
         this.first_name = null;
         this.lastName = null;
         this.password = null;
@@ -247,7 +254,8 @@ public class User {
         this.creditCards.add(newCreditCard);
     }
 
-    public static void setUsers(int index, String first_name, String lastName, String email, String password, String gender, long phoneNumber, String country, String id) {
+    public static void setUsers(int index, String first_name, String lastName, String email,
+                                String password, String gender, long phoneNumber, String country) {
         users.add(new User());
         users.get(index).first_name = first_name;
         users.get(index).lastName = lastName;
@@ -256,6 +264,6 @@ public class User {
         users.get(index).gender = gender;
         users.get(index).phoneNumber = phoneNumber;
         users.get(index).country = country;
-        users.get(index).id = id;
+        users.get(index).id = index;
     }
 }
