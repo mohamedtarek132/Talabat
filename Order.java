@@ -1,9 +1,7 @@
 package Talabat;
 
 public class Order {
-    private final Cart cart;
-    private final String paymentMethod;
-    private final Payment payment;
+
     private String orderStatus;
     private String orderTime;
     private final String preferredDeliveryTime;
@@ -30,9 +28,8 @@ public class Order {
         return paymentMethod;
     }
 
-    public Payment getPayment() {
-        return payment;
-    }
+
+
 
     public String getOrderStatus() {
         return orderStatus;

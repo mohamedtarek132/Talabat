@@ -1,0 +1,7 @@
+package Talabat;
+
+public class SignUpException extends Exception {
+    public SignUpException(String exception){
+        super(exception);
+    }
+}
