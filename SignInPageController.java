@@ -27,14 +27,26 @@ public class SignInPageController {
         try {
             user.signIn(email.getText(), password.getText());
             errorMessage.setOpacity(0);
+            UserInformationPageController.setUser(user);
+            switchTo(ae);
         }catch (EmailOrPasswordException emailOrPasswordException){
             errorMessage.setOpacity(1);
+        }catch (IOException exception){
+            System.out.println(exception.getMessage());
         }
     }
     public void switchToSignUpPage(ActionEvent ae) throws IOException {
         Stage stage;
         stage = (Stage)((Node)ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Sign_Up.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+        Scene scene = new Scene(root, Color.LIGHTBLUE);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchTo(ActionEvent ae) throws IOException{
+        Stage stage;
+        stage = (Stage)((Node)ae.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("UserInformationPage.fxml"));
         Scene scene = new Scene(root, Color.LIGHTBLUE);
         stage.setScene(scene);
         stage.show();

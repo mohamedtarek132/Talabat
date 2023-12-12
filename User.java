@@ -131,18 +131,18 @@ public class User {
     @FXML
     public void signUp(String first_name, String lastName, String email, String password,
                        String gender, String phoneNumber, String country, String address) throws SignUpException {
-        boolean found = false;
+        boolean foundEmail = false;
+        boolean foundPhoneNumber = false;
         String errors = "";
         long phoneNumber1 = 0;
         for (User user : users) {
             if (email.equals(user.getEmail())) {
-                found = true;
+                foundEmail = true;
                 break;
             }
         }
-        if (found) {
-            errors+="same email";
-        }
+
+
         if(first_name.isEmpty()){
             errors+="first name";
         }
@@ -163,6 +163,14 @@ public class User {
                 if (phoneNumber1 / (long)1000000000 !=1){
                     errors+="not a valid number";
                 }
+                else {
+                    for (User user : users) {
+                        if (phoneNumber1 == user.getPhoneNumber()) {
+                            errors += "same number";
+                            break;
+                        }
+                    }
+                }
             }catch (NumberFormatException exception){
                 errors+="char in number";
             }
@@ -174,6 +182,8 @@ public class User {
             errors+="email";
         } else if (!email.contains("@")&& !email.contains(".com")) {
             errors+="@ or .com";
+        } else if (foundEmail){
+            errors+="same e";
         }
         if (address.isEmpty()){
             errors+="address";

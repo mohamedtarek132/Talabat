@@ -90,7 +90,7 @@ public class SignUpPageController implements Initializable {
         } else if (exception.contains("@ or .com")) {
             emailEmptyField.setText("Please enter a valid email!");
             emailEmptyField.setOpacity(1);
-        }else if (exception.contains("same email")){
+        }else if (exception.contains("same e")){
             emailEmptyField.setText("This email is used by another user!");
             emailEmptyField.setOpacity(1);
         }else {
@@ -104,6 +104,9 @@ public class SignUpPageController implements Initializable {
             phoneNumberEmptyField.setOpacity(1);
         } else if (exception.contains("not a valid number")) {
             phoneNumberEmptyField.setText("Please eneter a valid number");
+            phoneNumberEmptyField.setOpacity(1);
+        } else if (exception.contains("same number")) {
+            phoneNumberEmptyField.setText("This number is used by another user!");
             phoneNumberEmptyField.setOpacity(1);
         } else {
             phoneNumberEmptyField.setOpacity(0);

@@ -25,7 +25,7 @@ public class hell extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
             try {
-                File myObj = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\user_info.txt");
+                File myObj = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\userInfo.txt");
                 Scanner myReader = new Scanner(myObj);
                 int i = 0;
                 while (myReader.hasNextLine()) {
@@ -38,13 +38,9 @@ public class hell extends Application {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-            Parent root = FXMLLoader.load(getClass().getResource("Sign_In.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
             Scene scene = new Scene(root, Color.LIGHTBLUE);
             primaryStage.setTitle("Hell");
-            Text text = new Text();
-            text.setText("hell 2");
-            text.setX(33);
-            text.setY(33);
 
             primaryStage.setScene(scene);
             primaryStage.show();

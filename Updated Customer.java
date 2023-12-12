@@ -86,7 +86,7 @@
 //    }
 //
 //    public void removeItemFromCart(Cart current_cart, Item current_item, int quantity) {
-//        ArrayList <Item> nItems = current_cart.getItems();
+//        ArrayList<Item> nItems = current_cart.getItems();
 //        int size = nItems.size();
 //        int current_quantity = current_item.getQuantityInOrder();
 //        for (int i = 0; i < size; i++) {
@@ -98,41 +98,38 @@
 //        current_cart.setItems(nItems);
 //    }
 //
-//        public Payment choosePaymentMethod(CreditCard CC, User current_user, Cart current_cart)
-//        {
-//            Payment payment = new Payment();
-//            LocalDate date = LocalDate.now();
-//            String New_Date = date.toString();
-//            payment.setPayment_Method("credit card");
-//            payment.setPayment_Date(New_Date);
-//            payment.setUser(current_user);
-//            payment.Pay(current_cart.getTotalPrice(),payment);
-//            return payment;
-//        }
+//    public Payment choosePaymentMethod(CreditCard CC, User current_user, Cart current_cart) {
+//        Payment payment = new Payment();
+//        LocalDate date = LocalDate.now();
+//        String New_Date = date.toString();
+//        payment.setPayment_Method("credit card");
+//        payment.setPayment_Date(New_Date);
+//        payment.setUser(current_user);
+//        payment.Pay(current_cart.getTotalPrice(), payment);
+//        return payment;
+//    }
 //
-//        public Payment choosePaymentMethod(Wallet wallet, User current_user, Cart current_cart)
-//        {
-//            Payment payment = new Payment();
-//            LocalDate date = LocalDate.now();
-//            String New_Date = date.toString();
-//            payment.setPayment_Method("wallet");
-//            payment.setPayment_Date(New_Date);
-//            payment.setUser(current_user);
-//            payment.Pay(current_cart.getTotalPrice(),payment);
-//            return payment;
-//        }
+//    public Payment choosePaymentMethod(Wallet wallet, User current_user, Cart current_cart) {
+//        Payment payment = new Payment();
+//        LocalDate date = LocalDate.now();
+//        String New_Date = date.toString();
+//        payment.setPayment_Method("wallet");
+//        payment.setPayment_Date(New_Date);
+//        payment.setUser(current_user);
+//        payment.Pay(current_cart.getTotalPrice(), payment);
+//        return payment;
+//    }
 //
-//        public Payment choosePaymentMethod(User current_user, Cart current_cart)
-//        {
-//            Payment payment = new Payment();
-//            LocalDate date = LocalDate.now();
-//            String New_Date = date.toString();
-//            payment.setPayment_Method("cash");
-//            payment.setPayment_Date(New_Date);
-//            payment.setUser(current_user);
-//            payment.Pay(current_cart.getTotalPrice(),payment);
-//            return payment;
-//        }
+//    public Payment choosePaymentMethod(User current_user, Cart current_cart) {
+//        Payment payment = new Payment();
+//        LocalDate date = LocalDate.now();
+//        String New_Date = date.toString();
+//        payment.setPayment_Method("cash");
+//        payment.setPayment_Date(New_Date);
+//        payment.setUser(current_user);
+//        payment.Pay(current_cart.getTotalPrice(), payment);
+//        return payment;
+//    }
 //
 //    public void cancelOrder(Order current_order) {
 //        current_order.setOrderStatus("Cancelled");
