@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.UserInformationPageController">
+<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.UserInformationPageController">
    <children>
       <Text layoutX="222.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Information Page">
          <font>

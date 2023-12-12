@@ -1,12 +1,12 @@
 package Talabat;
 
+import Talabat.Classes.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -38,7 +38,7 @@ public class hell extends Application {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-            Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Fxmls/SignIn.fxml"));
             Scene scene = new Scene(root, Color.LIGHTBLUE);
             primaryStage.setTitle("Hell");
 

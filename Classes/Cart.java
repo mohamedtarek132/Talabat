@@ -1,4 +1,4 @@
-package Talabat;
+package Talabat.Classes;
 
 public class Cart {
     private int numberOfItems;

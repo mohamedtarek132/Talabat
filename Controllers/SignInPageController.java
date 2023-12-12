@@ -1,5 +1,7 @@
-package Talabat;
+package Talabat.Controllers;
 
+import Talabat.Exceptions.EmailOrPasswordException;
+import Talabat.Classes.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

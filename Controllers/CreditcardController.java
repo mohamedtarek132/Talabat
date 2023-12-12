@@ -1,4 +1,5 @@
-package com.example.demo1;
+package Talabat.Controllers;
+import Talabat.Classes.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,15 +33,15 @@ public class CreditcardController {
         String userinputcardnumber;
         @FXML
         private TextField cardtypeTextField;
-        private Creditcard creditcard;
+        private CreditCard creditcard;
     private User user;
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    private List<Creditcard> creditcards=new ArrayList<>();
-        public void setCreditcard(Creditcard creditcard) {
+    private List<CreditCard> creditcards=new ArrayList<>();
+        public void setCreditcard(CreditCard creditcard) {
             this.creditcard = creditcard;
 
 
@@ -81,14 +82,14 @@ public class CreditcardController {
                 else{
                     cvvlabel.setText("");
                 }
-                for (Creditcard existingCard : creditcards) {
+                for (CreditCard existingCard : creditcards) {
                     if (existingCard.getCardNumber().equals(cardnumber)) {
                         cardnumberlabel.setText("This card already exists.");
                         return;
                     }
                 }
                 // Create a new credit object
-                creditcard = new Creditcard(cardnumber, cardholders, cvv, expirationdate);
+                creditcard = new CreditCard(cardnumber, cardholders, cvv, expirationdate);
                 // Add the new card to the list
                 creditcards.add(creditcard);
                 user.addCreditCard(cardnumber,cvv,cardholders,expirationdate);
@@ -108,7 +109,7 @@ public class CreditcardController {
 
 
 
-        public Creditcard getCreditcard() {
+        public CreditCard getCreditcard() {
             return creditcard;
         }
         public String getCardNumber() {

@@ -1,5 +1,7 @@
-package Talabat;
+package Talabat.Controllers;
 
+import Talabat.Exceptions.SignUpException;
+import Talabat.Classes.User;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 

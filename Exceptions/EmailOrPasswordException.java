@@ -1,4 +1,4 @@
-package Talabat;
+package Talabat.Exceptions;
 
 public class EmailOrPasswordException extends Exception {
     public EmailOrPasswordException() {

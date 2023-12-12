@@ -1,5 +1,7 @@
-package Talabat;
+package Talabat.Classes;
 
+import Talabat.Exceptions.EmailOrPasswordException;
+import Talabat.Exceptions.SignUpException;
 import javafx.fxml.FXML;
 
 import java.util.ArrayList;
