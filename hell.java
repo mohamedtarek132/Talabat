@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class hell extends Application {
     public static void main(String[] args) {
         launch(args);
         AnchorPane d = new AnchorPane();
+        writeFiles();
     }
     public void readingFiles(){
         try {
@@ -46,7 +48,30 @@ public class hell extends Application {
             e.printStackTrace();
         }
     }
+    public static void writeFiles(){
+        try {
+            FileWriter myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
+            for (User user: User.getUsers()) {
+                myWriter.write(user.getId()+","+user.getFirst_name()+","+ user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
+                         + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
+                myWriter.write("\n");
+                System.out.println(1);
+            }
+            myWriter.close();
 
+            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userAddress.txt");
+            for (User user: User.getUsers()){
+                for(String address: user.getAddress()){
+                    System.out.println(address);
+                    myWriter.write(user.getId() + "," + address);
+                    myWriter.write("\n");
+                }
+            }
+            myWriter.close();
+        }catch (IOException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
     @Override
     public void start(Stage primaryStage) throws IOException {
         readingFiles();

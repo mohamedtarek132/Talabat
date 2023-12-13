@@ -202,6 +202,7 @@ public class User {
         users.get((users.size() - 1)).setFirst_name(first_name);
         users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
         users.get((users.size() - 1)).addAddress(address);
+        users.get(users.size() - 1).setId(users.size() - 1);
         this.country = country;
         this.email = email;
         this.gender = gender;
@@ -280,5 +281,13 @@ public class User {
     }
     public static void setUsersAddresses(int index, String address){
         users.get(index).addAddress(address);
+    }
+
+    public ArrayList<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
     }
 }

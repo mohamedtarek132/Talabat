@@ -1,2 +1,6 @@
-0,22 shar3 el btengan
-0,33 shar3 el hay hay hay
+0,33 shar3 el betngan
+1,44 shar3 el hobl
+2,55 shar3 el maganeen
+3,66 shar3 el mt3ntazeen
+4,77 shar3 el ta3baneen
+5,df
