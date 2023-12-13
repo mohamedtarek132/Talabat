@@ -48,17 +48,17 @@ public class SignUpPageController implements Initializable {
     private Text tying;
     @FXML
     private ChoiceBox<String> genderChoiceBox;
-    private User user = new User();
+    private final User user = new User();
+
     @FXML
-    public void signUp(ActionEvent event){
+    public void signUp(ActionEvent event) {
         String exception = "";
         long phoneNumber1 = 0;
         try {
-            user.signUp(firstName.getText(),lastName.getText(), email.getText(), password.getText(),genderChoiceBox.getValue(),
-                    phoneNumber.getText(),country.getText(), address.getText());
+            user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
+                    phoneNumber.getText(), country.getText(), address.getText());
             tying.setOpacity(1);
-        }
-        catch (SignUpException signUpException) {
+        } catch (SignUpException signUpException) {
             exception = signUpException.getMessage();
         }
         if (exception.contains("first name")) {
@@ -92,10 +92,10 @@ public class SignUpPageController implements Initializable {
         } else if (exception.contains("@ or .com")) {
             emailEmptyField.setText("Please enter a valid email!");
             emailEmptyField.setOpacity(1);
-        }else if (exception.contains("same e")){
+        } else if (exception.contains("same e")) {
             emailEmptyField.setText("This email is used by another user!");
             emailEmptyField.setOpacity(1);
-        }else {
+        } else {
             emailEmptyField.setOpacity(0);
         }
         if (exception.contains("phone number")) {
@@ -125,7 +125,8 @@ public class SignUpPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         genderChoiceBox.getItems().addAll("Male", "Female");
     }
-    public void switchTo(ActionEvent ae){
+
+    public void switchTo(ActionEvent ae) {
 
     }
 }

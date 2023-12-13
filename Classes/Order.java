@@ -4,6 +4,9 @@ import Talabat.Exceptions.NotAdminException;
 
 public class Order {
 
+    private final Cart cart;
+    private final String paymentMethod;
+    private final Payment payment;
     private String orderStatus;
     private String orderTime;
     private final String preferredDeliveryTime;
@@ -11,9 +14,8 @@ public class Order {
     private final String userInstructions;
     private Review review;
 
-    public Order (Cart cart, String paymentMethod, Payment payment, String preferredDeliveryTime,
-                  User user, String userInstructions)
-    {
+    public Order(Cart cart, String paymentMethod, Payment payment, String preferredDeliveryTime,
+                 User user, String userInstructions) {
         this.cart = cart;
         this.paymentMethod = paymentMethod;
         this.payment = payment;
@@ -31,17 +33,14 @@ public class Order {
     }
 
 
-
-
     public String getOrderStatus() {
         return orderStatus;
     }
 
     public void setOrderStatus(String orderStatus, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.orderStatus = orderStatus;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -51,10 +50,9 @@ public class Order {
     }
 
     public void setOrderTime(String orderTime, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.orderTime = orderTime;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }

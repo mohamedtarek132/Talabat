@@ -24,25 +24,25 @@ public class hell extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-            try {
-                File myObj = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\userInfo.txt");
-                Scanner myReader = new Scanner(myObj);
-                int i = 0;
-                while (myReader.hasNextLine()) {
-                    String[] data = myReader.nextLine().split(",");
-                    User.setUsers(Integer.parseInt(data[0]),data[1], data[2], data[3], data[4], data[5],Long.parseLong(data[6]), data[7]);
-                    i++;
-                }
-                myReader.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
+        try {
+            File myObj = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
+            Scanner myReader = new Scanner(myObj);
+            int i = 0;
+            while (myReader.hasNextLine()) {
+                String[] data = myReader.nextLine().split(",");
+                User.setUsers(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], Long.parseLong(data[6]), data[7]);
+                i++;
             }
-            Parent root = FXMLLoader.load(getClass().getResource("Fxmls/SignIn.fxml"));
-            Scene scene = new Scene(root, Color.LIGHTBLUE);
-            primaryStage.setTitle("Hell");
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        Parent root = FXMLLoader.load(getClass().getResource("Fxmls/SignIn.fxml"));
+        Scene scene = new Scene(root, Color.LIGHTBLUE);
+        primaryStage.setTitle("Hell");
 
-            primaryStage.setScene(scene);
-            primaryStage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

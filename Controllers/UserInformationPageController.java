@@ -28,6 +28,7 @@ public class UserInformationPageController implements Initializable {
     private static User user;
     @FXML
     private ChoiceBox<String> genderChoiceBox;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         email.setText(user.getEmail());

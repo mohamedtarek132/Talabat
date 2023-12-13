@@ -23,33 +23,36 @@ public class SignInPageController {
     private PasswordField password;
     @FXML
     private Text errorMessage;
-    private User user = new User();
+    private final User user = new User();
+
     @FXML
-    public void signIn(ActionEvent ae){
+    public void signIn(ActionEvent ae) {
         try {
             user.signIn(email.getText(), password.getText());
             errorMessage.setOpacity(0);
             UserInformationPageController.setUser(user);
             switchTo(ae);
-        }catch (EmailOrPasswordException emailOrPasswordException){
+        } catch (EmailOrPasswordException emailOrPasswordException) {
             errorMessage.setOpacity(1);
-        }catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
+
     public void switchToSignUpPage(ActionEvent ae) throws IOException {
         Stage stage;
-        stage = (Stage)((Node)ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
-        Scene scene = new Scene(root, Color.LIGHTBLUE);
+        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/SignUp.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void switchTo(ActionEvent ae) throws IOException{
+
+    public void switchTo(ActionEvent ae) throws IOException {
         Stage stage;
-        stage = (Stage)((Node)ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("UserInformationPage.fxml"));
-        Scene scene = new Scene(root, Color.LIGHTBLUE);
+        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPage.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

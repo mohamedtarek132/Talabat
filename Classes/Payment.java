@@ -1,9 +1,8 @@
 package Talabat.Classes;
 
-public class Payment
-{
-   
-    private  double  Total_price;
+public class Payment {
+
+    private double Total_price;
     private String Payment_Method;
     private String Transaction_id;
     private String Payment_Status; // it`s static because it`s changeable
@@ -52,8 +51,7 @@ public class Payment
         this.Total_price = total_price;
 
 
-        if (Payment_method instanceof Wallet) {
-            Wallet wallet = (Wallet) Payment_method;
+        if (Payment_method instanceof Wallet wallet) {
             if (wallet.deductFunds(total_price)) {
                 Payment_Status = "Successfully paid ";
 

@@ -23,10 +23,9 @@ public class Restaurant {
     }
 
     public void setName(String name, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.name = name;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -36,10 +35,9 @@ public class Restaurant {
     }
 
     public void setPhoneNumber(String phoneNumber, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.phoneNumber = phoneNumber;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -49,10 +47,9 @@ public class Restaurant {
     }
 
     public void setRestaurantID(int restaurantID, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.restaurantID = restaurantID;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -62,10 +59,9 @@ public class Restaurant {
     }
 
     public void setAddress(String[] address, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.address = address;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -75,10 +71,9 @@ public class Restaurant {
     }
 
     public void setMenu(ArrayList<Item> menu, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.menu = menu;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -88,10 +83,9 @@ public class Restaurant {
     }
 
     public void setReviews(ArrayList<Review> reviews, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.reviews = reviews;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -101,10 +95,9 @@ public class Restaurant {
     }
 
     public void setDeliveryDuration(int deliveryDuration, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.deliveryDuration = deliveryDuration;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -114,10 +107,9 @@ public class Restaurant {
     }
 
     public void setOpeningHour(String openingHour, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.openingHour = openingHour;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -127,10 +119,9 @@ public class Restaurant {
     }
 
     public void setClosingHour(String closingHour, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.closingHour = closingHour;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -140,10 +131,9 @@ public class Restaurant {
     }
 
     public void setCategory(String category, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.category = category;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }
@@ -153,10 +143,9 @@ public class Restaurant {
     }
 
     public void setDeliveryFee(float deliveryFee, User user) throws NotAdminException {
-        if (user instanceof Admin){
+        if (user instanceof Admin) {
             this.deliveryFee = deliveryFee;
-        }
-        else {
+        } else {
             throw new NotAdminException();
         }
     }

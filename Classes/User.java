@@ -16,9 +16,10 @@ public class User {
     private ArrayList<String> address = new ArrayList<>();
     private String country;
     private int id;
-    private ArrayList<CreditCard> creditCards = new ArrayList<>();
-    private static ArrayList<User> users = new ArrayList<>();
+    private final ArrayList<CreditCard> creditCards = new ArrayList<>();
+    private static final ArrayList<User> users = new ArrayList<>();
     private static User user;
+
     @FXML
     public String getFirst_name() {
         return first_name;
@@ -145,27 +146,26 @@ public class User {
         }
 
 
-        if(first_name.isEmpty()){
-            errors+="first name";
+        if (first_name.isEmpty()) {
+            errors += "first name";
         }
-        if (lastName.isEmpty()){
-            errors+="last name";
+        if (lastName.isEmpty()) {
+            errors += "last name";
         }
-        if(password.isEmpty()){
-            errors+="password";
+        if (password.isEmpty()) {
+            errors += "password";
         }
         if (gender == null) {
-            errors+="gender";
+            errors += "gender";
         }
-        if (phoneNumber.isEmpty() ) {
-            errors+="phone number";
+        if (phoneNumber.isEmpty()) {
+            errors += "phone number";
         } else {
-            try{
+            try {
                 phoneNumber1 = Long.parseLong(phoneNumber);
-                if (phoneNumber1 / (long)1000000000 !=1){
-                    errors+="not a valid number";
-                }
-                else {
+                if (phoneNumber1 / (long) 1000000000 != 1) {
+                    errors += "not a valid number";
+                } else {
                     for (User user : users) {
                         if (phoneNumber1 == user.getPhoneNumber()) {
                             errors += "same number";
@@ -173,24 +173,24 @@ public class User {
                         }
                     }
                 }
-            }catch (NumberFormatException exception){
-                errors+="char in number";
+            } catch (NumberFormatException exception) {
+                errors += "char in number";
             }
         }
         if (country.isEmpty()) {
-            errors+="country";
+            errors += "country";
         }
         if (email.isEmpty()) {
-            errors+="email";
-        } else if (!email.contains("@")&& !email.contains(".com")) {
-            errors+="@ or .com";
-        } else if (foundEmail){
-            errors+="same e";
+            errors += "email";
+        } else if (!email.contains("@") && !email.contains(".com")) {
+            errors += "@ or .com";
+        } else if (foundEmail) {
+            errors += "same e";
         }
-        if (address.isEmpty()){
-            errors+="address";
+        if (address.isEmpty()) {
+            errors += "address";
         }
-        if (!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             throw new SignUpException(errors);
         }
         users.add(new User());
