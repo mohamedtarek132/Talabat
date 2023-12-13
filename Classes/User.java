@@ -16,8 +16,8 @@ public class User {
     private ArrayList<String> address = new ArrayList<>();
     private String country;
     private int id;
-    private final ArrayList<CreditCard> creditCards = new ArrayList<>();
-    private static final ArrayList<User> users = new ArrayList<>();
+    private ArrayList<CreditCard> creditCards = new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
     private static User user;
 
     @FXML
@@ -277,5 +277,8 @@ public class User {
         users.get(index).phoneNumber = phoneNumber;
         users.get(index).country = country;
         users.get(index).id = index;
+    }
+    public static void setUsersAddresses(int index, String address){
+        users.get(index).addAddress(address);
     }
 }

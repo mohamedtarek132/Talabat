@@ -21,7 +21,7 @@ public class UserInformationPageController implements Initializable {
     @FXML
     private TextField phoneNumber;
     @FXML
-    private TextField address;
+    private ChoiceBox<String> address;
     @FXML
     private TextField country;
     @FXML
@@ -38,6 +38,10 @@ public class UserInformationPageController implements Initializable {
         firstName.setText(user.getFirst_name());
         lastName.setText(user.getLastName());
         genderChoiceBox.setValue(user.getGender());
+        for (String addresses: user.getAddress() ) {
+            System.out.println(addresses);
+            address.getItems().add(addresses);
+        }
 //        email.setFocusTraversable(false);
     }
 

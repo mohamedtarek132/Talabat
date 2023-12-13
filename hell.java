@@ -19,27 +19,39 @@ public class hell extends Application {
     public static void main(String[] args) {
         launch(args);
         AnchorPane d = new AnchorPane();
-        System.out.println("yayyy23");
     }
-
-    @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void readingFiles(){
         try {
-            File myObj = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
-            Scanner myReader = new Scanner(myObj);
+            File file = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
+            Scanner scanner = new Scanner(file);
             int i = 0;
-            while (myReader.hasNextLine()) {
-                String[] data = myReader.nextLine().split(",");
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
                 User.setUsers(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], Long.parseLong(data[6]), data[7]);
                 i++;
             }
-            myReader.close();
+            scanner.close();
+
+            file = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userAddress.txt");
+            scanner = new Scanner(file);
+            i = 0;
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                User.setUsersAddresses(Integer.parseInt(data[0]),data[1]);
+                i++;
+            }
+            scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        readingFiles();
         Parent root = FXMLLoader.load(getClass().getResource("Fxmls/SignIn.fxml"));
-        Scene scene = new Scene(root, Color.LIGHTBLUE);
+        Scene scene = new Scene(root);
         primaryStage.setTitle("Hell");
 
         primaryStage.setScene(scene);
