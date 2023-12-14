@@ -66,7 +66,6 @@ public class Payment {
         if (Payment_method instanceof CreditCard) {
             Payment_Status = "Successfully paid ";
         }
-
-
+        Payment_Status = "Successfully paid ";
     }
 }

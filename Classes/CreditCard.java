@@ -5,7 +5,7 @@ public class CreditCard {
     private int cvv;
     private String cardholderName;
     //(visa,mastercard)نوع البطاقه
-    private String tyBe;
+    private String type;
 
     private String expirationDate;
 
@@ -14,7 +14,7 @@ public class CreditCard {
         this.cvv = cvv;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
-        this.tyBe = tyBe;
+        this.type = type;
     }
 
     public void setCardNumber(String cardNumber) {

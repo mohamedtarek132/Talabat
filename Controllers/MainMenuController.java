@@ -1,4 +1,4 @@
-package com.example.oop_fx;
+package Talabat.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+public class MainMenuController {
     private Stage stage;
     private Scene scene;
     private Parent root;
