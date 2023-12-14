@@ -52,7 +52,7 @@ public class SignInPageController {
     public void switchTo(ActionEvent ae) throws IOException {
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/MainMenu.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

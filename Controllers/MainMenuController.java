@@ -42,7 +42,7 @@ public class MainMenuController {
     }
     public void switchToCartScene(ActionEvent event) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("CartScene.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/SignUp.fxml"));
         stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
@@ -50,7 +50,8 @@ public class MainMenuController {
     }
     public void switchToUserInfoScene(ActionEvent event) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("UserInfoScene.fxml"));
+        System.out.println(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
         stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);

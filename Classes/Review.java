@@ -31,8 +31,8 @@ public class Review {
         return Comment;
     }
 
-    public String getUser_id() {
-        return User_id;
+    public int getUser_id() {
+        return UserId;
     }
 
     public String getDate() {

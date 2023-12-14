@@ -33,7 +33,7 @@ public class CreditcardController {
         String userinputcardnumber;
         @FXML
         private TextField cardtypeTextField;
-        private Creditcard creditcard;
+        private CreditCard creditcard;
 
     private User user;
 
@@ -41,8 +41,8 @@ public class CreditcardController {
         this.user = user;
     }
 
-    private List<Creditcard> creditcards=new ArrayList<>();
-        public void setCreditcard(Creditcard creditcard) {
+    private List<CreditCard> creditcards=new ArrayList<>();
+        public void setCreditcard(CreditCard creditcard) {
             this.creditcard = creditcard;
 
 
@@ -92,14 +92,14 @@ public class CreditcardController {
                     cvvlabel.setText("");
                 }
                 int cvv=Integer.parseInt(cvvtex);
-                for (Creditcard existingCard : creditcards) {
+                for (CreditCard existingCard : creditcards) {
 
                     if (existingCard.getCardNumber().equals(cardnumber)) {
                         cardnumberlabel.setText("This card already exists.");
 
                     }
                 }
-                creditcard = new Creditcard(cardnumber, cvv, cardholders, expirationdate);
+                creditcard = new CreditCard(cardnumber, cvv, cardholders, expirationdate);
                 creditcards.add(creditcard);
                 user.addCreditCard(cardnumber,cvv,cardholders,expirationdate);
                 cardnumberlabel.setText("");
@@ -115,7 +115,7 @@ public class CreditcardController {
 
 
 
-        public Creditcard getCreditcard() {
+        public CreditCard getCreditcard() {
             return creditcard;
         }
         public String getCardNumber() {
