@@ -2,12 +2,11 @@ package Talabat.Classes;
 
 import Talabat.Exceptions.EmailOrPasswordException;
 import Talabat.Exceptions.SignUpException;
-import javafx.fxml.FXML;
 
 import java.util.ArrayList;
 
-public class User {
-    private String first_name;
+public abstract class User {
+    private String firstName;
     private String lastName;
     private String email;
     private String password;
@@ -18,32 +17,25 @@ public class User {
     private int id;
     private ArrayList<CreditCard> creditCards = new ArrayList<>();
     private static ArrayList<User> users = new ArrayList<>();
-    private static User user;
-
-    @FXML
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    @FXML
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String first_name) {
+        this.firstName = first_name;
     }
 
-    @FXML
 
     public String getLastName() {
         return lastName;
     }
 
-    @FXML
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @FXML
 
     public String getEmail() {
         return email;
@@ -53,85 +45,70 @@ public class User {
         this.email = email;
     }
 
-    @FXML
 
     public String getPassword() {
         return password;
     }
 
-    @FXML
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @FXML
 
     public String getGender() {
         return gender;
     }
 
-    @FXML
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    @FXML
 
     public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    @FXML
 
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    @FXML
 
     public ArrayList<String> getAddress() {
         return address;
     }
 
-    @FXML
 
     public void setAddress(ArrayList<String> address) {
         this.address = address;
     }
 
-    @FXML
-
     public String getCountry() {
         return country;
     }
 
-    @FXML
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    @FXML
 
     public int getId() {
         return id;
     }
 
-    @FXML
 
     public void setId(int id) {
         this.id = id;
     }
 
-    @FXML
 
     public void addAddress(String address) {
         this.address.add(address);
     }
 
-    @FXML
     public void signUp(String first_name, String lastName, String email, String password,
                        String gender, String phoneNumber, String country, String address) throws SignUpException {
         boolean foundEmail = false;
@@ -193,20 +170,20 @@ public class User {
         if (!errors.isEmpty()) {
             throw new SignUpException(errors);
         }
-        users.add(new User());
+        users.add(new Customer());
         users.get(users.size() - 1).setEmail(email);
         users.get(users.size() - 1).setPassword(password);
         users.get((users.size() - 1)).setLastName(lastName);
         users.get((users.size() - 1)).setCountry(country);
         users.get((users.size() - 1)).setGender(gender);
-        users.get((users.size() - 1)).setFirst_name(first_name);
+        users.get((users.size() - 1)).setFirstName(first_name);
         users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
         users.get((users.size() - 1)).addAddress(address);
         users.get(users.size() - 1).setId(users.size() - 1);
         this.country = country;
         this.email = email;
         this.gender = gender;
-        this.first_name = first_name;
+        this.firstName = first_name;
         this.lastName = lastName;
         this.password = password;
         this.phoneNumber = phoneNumber1;
@@ -219,15 +196,15 @@ public class User {
         this.email = null;
         this.gender = null;
         this.id = -1;
-        this.first_name = null;
+        this.firstName = null;
         this.lastName = null;
         this.password = null;
         this.phoneNumber = 0;
     }
 
-    @FXML
-    public void signIn(String email, String password) throws EmailOrPasswordException {
+    public static User signIn(String email, String password) throws EmailOrPasswordException {
         boolean found = false;
+        User user;
         int index = -1;
         for (int i = 0; i < users.size(); i++) {
             if (email.equals(users.get(i).getEmail()) && password.equals(users.get(i).getPassword())) {
@@ -239,15 +216,21 @@ public class User {
         if (!found) {
             throw new EmailOrPasswordException();
         }
-        this.address = users.get(index).address;
-        this.country = users.get(index).country;
-        this.email = users.get(index).email;
-        this.gender = users.get(index).gender;
-        this.id = users.get(index).id;
-        this.first_name = users.get(index).first_name;
-        this.lastName = users.get(index).lastName;
-        this.password = users.get(index).password;
-        this.phoneNumber = users.get(index).phoneNumber;
+        if (index > 0){
+             user = new Customer();
+        } else {
+             user = new Admin();
+        }
+        user.address= users.get(index).address;
+        user.country = users.get(index).country;
+        user.email = users.get(index).email;
+        user.gender = users.get(index).gender;
+        user.id = users.get(index).id;
+        user.firstName = users.get(index).firstName;
+        user.lastName = users.get(index).lastName;
+        user.password = users.get(index).password;
+        user.phoneNumber = users.get(index).phoneNumber;
+        return user;
     }
 
     public ArrayList<Item> searchForItem(String name, ArrayList<Restaurant> restaurants) {
@@ -269,8 +252,12 @@ public class User {
 
     public static void setUsers(int index, String first_name, String lastName, String email,
                                 String password, String gender, long phoneNumber, String country) {
-        users.add(new User());
-        users.get(index).first_name = first_name;
+        if(index < 0){
+            users.add(new Admin());
+        } else {
+            users.add(new Customer());
+        }
+        users.get(index).firstName = first_name;
         users.get(index).lastName = lastName;
         users.get(index).email = email;
         users.get(index).password = password;

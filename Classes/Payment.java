@@ -37,6 +37,10 @@ public class Payment {
         return Payment_Status;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getPayment_Date() {
         return Payment_Date;
     }

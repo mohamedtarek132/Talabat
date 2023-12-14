@@ -1,5 +1,6 @@
 package Talabat.Controllers;
 
+import Talabat.Classes.Customer;
 import Talabat.Exceptions.EmailOrPasswordException;
 import Talabat.Classes.User;
 import javafx.event.ActionEvent;
@@ -23,12 +24,12 @@ public class SignInPageController {
     private PasswordField password;
     @FXML
     private Text errorMessage;
-    private final User user = new User();
+    private User user;
 
     @FXML
     public void signIn(ActionEvent ae) {
         try {
-            user.signIn(email.getText(), password.getText());
+            user = User.signIn(email.getText(), password.getText());
             errorMessage.setOpacity(0);
             UserInformationPageController.setUser(user);
             switchTo(ae);

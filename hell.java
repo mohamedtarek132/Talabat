@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -52,7 +51,7 @@ public class hell extends Application {
         try {
             FileWriter myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
             for (User user: User.getUsers()) {
-                myWriter.write(user.getId()+","+user.getFirst_name()+","+ user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
+                myWriter.write(user.getId()+","+user.getFirstName()+","+ user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
                          + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
                 myWriter.write("\n");
                 System.out.println(1);
