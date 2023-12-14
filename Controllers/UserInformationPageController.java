@@ -35,7 +35,7 @@ public class UserInformationPageController implements Initializable {
         password.setText(user.getPassword());
         phoneNumber.setText(Long.toString(user.getPhoneNumber()));
         country.setText(user.getCountry());
-        firstName.setText(user.getFirst_name());
+        firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         genderChoiceBox.setValue(user.getGender());
         address.setValue(user.getAddress().get(0));

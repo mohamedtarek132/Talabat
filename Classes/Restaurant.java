@@ -82,12 +82,8 @@ public class Restaurant {
         return reviews;
     }
 
-    public void setReviews(ArrayList<Review> reviews, User user) throws NotAdminException {
-        if (user instanceof Admin) {
-            this.reviews = reviews;
-        } else {
-            throw new NotAdminException();
-        }
+    public void setReviews(Review reviews)  {
+        this.reviews.add(reviews);
     }
 
     public int getDeliveryDuration() {

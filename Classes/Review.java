@@ -3,7 +3,7 @@ package Talabat.Classes;
 public class Review {
     private int rating;
     private String Comment;
-    private String User_id;
+    private int UserId;
     private String Date;
 
     public void setRating(int rating) {
@@ -14,8 +14,8 @@ public class Review {
         Comment = comment;
     }
 
-    public void setUser_id(String user_id) {
-        User_id = user_id;
+    public void setUser_id(int user_id) {
+        UserId = user_id;
     }
 
     public void setDate(String date) {

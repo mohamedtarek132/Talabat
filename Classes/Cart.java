@@ -2,9 +2,13 @@ package Talabat.Classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.ArrayList;
+
 public class Cart {
     private int numberOfItems;
-    private List<Item> items;
+
+    private ArrayList<Item> items = new ArrayList<>();
+
     private int totalPrice;
     private Restaurant restaurant;
 
@@ -22,11 +26,11 @@ public class Cart {
         this.numberOfItems = numberOfItems;
     }
 
-    public List<Item> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
