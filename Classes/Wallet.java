@@ -1,12 +1,24 @@
 package Talabat.Classes;
 
-public class Wallet {
-    private User user;
-    private double baLanCe;
+package com.example.demo1;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Wallet(double baLance, User user) {
-        this.baLanCe = baLanCe;
-        this.user = user;
+public class Wallet {
+   private User user;
+    private double baLanCe;
+    List<Payment>Transaction=new ArrayList<>();
+
+
+    public Wallet(User user,double baLanCe ){
+        this.baLanCe=baLanCe;
+        this.user=user;
+        this.Transaction=new ArrayList<>();
+
+    }
+
+    public Wallet() {
+
     }
 
     public double getBalance() {
@@ -25,24 +37,28 @@ public class Wallet {
         this.user = user;
     }
 
-    //if you want to put money int the wallet.
-    //The amount parameter is the amount of money to be added.
     public void addFunds(double amount) {
+
         this.baLanCe += amount;
+
     }
 
-    // It is used deduct money from the wallet balance.
-    // The method first check if the balance is greater than or equal to the amount.
-    // If it is, then the amount is subtracted from the balance and the method returns true.
-    //Otherwise, the method returns false.
     public Boolean deductFunds(double amount) {
-        if (this.baLanCe >= amount) {
-            this.baLanCe -= amount;
-            return true;
-        } else {
-            return false;
+            if (this.baLanCe >= amount) {
+                this.baLanCe -= amount;
+
+                return true;
+            } else {
+                return false;
+            }
         }
+
+    public List<Payment> getTransaction() {
+        return Transaction;
     }
+
 
 }
+
+
 
