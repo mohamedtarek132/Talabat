@@ -13,11 +13,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserInformationPageController implements Initializable {
+    @FXML
+    private static User user;
     @FXML
     private TextField email;
     @FXML
@@ -33,11 +36,14 @@ public class UserInformationPageController implements Initializable {
     @FXML
     private TextField country;
     @FXML
-    private static User user;
-    @FXML
     private ChoiceBox<String> genderChoiceBox;
     @FXML
     private ChoiceBox<String> creditCard;
+
+    public static void setUser(User user) {
+        UserInformationPageController.user = user;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         email.setText(user.getEmail());
@@ -52,11 +58,15 @@ public class UserInformationPageController implements Initializable {
             System.out.println(addresses);
             address.getItems().add(addresses);
         }
-        for (CreditCard cardNumber: user.getCreditCards()){
+        creditCard.setValue(user.getCreditCards().get(0).getCardNumber());
+        for (CreditCard cardNumber : user.getCreditCards()) {
             creditCard.getItems().add(cardNumber.getCardNumber());
+            System.out.println(cardNumber.getCardNumber());
+            System.out.println(1);
         }
 //        email.setFocusTraversable(false);
     }
+
     public void switchToMainMenu(ActionEvent ae) throws IOException {
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
@@ -65,7 +75,25 @@ public class UserInformationPageController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public static void setUser(User user) {
-        UserInformationPageController.user = user;
+
+    public void editInfo(ActionEvent event) {
+        boolean value = true;
+        email.setEditable(value);
+        password.setEditable(value);
+        phoneNumber.setEditable(value);
+        country.setEditable(value);
+        firstName.setEditable(value);
+        lastName.setEditable(value);
+        genderChoiceBox.getItems().addAll("Male", "Female");
+    }
+
+    public void switchToCreditCard(ActionEvent event) throws IOException {
+        CreditcardController.setUser(user);
+        Stage stage;
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/Creditcard.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

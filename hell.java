@@ -23,6 +23,41 @@ public class hell extends Application {
         writeFiles();
     }
 
+    public static void writeFiles() {
+        try {
+            FileWriter myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
+            for (User user : User.getUsers()) {
+                myWriter.write(user.getId() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
+                        + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
+                myWriter.write("\n");
+                System.out.println(1);
+            }
+            myWriter.close();
+
+            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userAddress.txt");
+            for (User user : User.getUsers()) {
+                for (String address : user.getAddress()) {
+                    System.out.println(address);
+                    myWriter.write(user.getId() + "," + address);
+                    myWriter.write("\n");
+                }
+            }
+            myWriter.close();
+            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userCreditCard");
+            for (User user : User.getUsers()) {
+                for (CreditCard creditCard : user.getCreditCards()) {
+                    myWriter.write(user.getId() + "," + creditCard.getCardNumber() + "," + creditCard.getCvv() + "," +
+                            creditCard.getExpirationDate() + "," + creditCard.getCardholderName());
+                    myWriter.write("\n");
+                }
+            }
+            myWriter.close();
+
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
     public void readingFiles() {
         try {
             File file = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
@@ -42,8 +77,6 @@ public class hell extends Application {
                 String[] data = scanner.nextLine().split(",");
                 User.setUsersAddresses(Integer.parseInt(data[0]), data[1]);
                 i++;
-
-
 
 
 //file = new File("D:\\Talabat\\Talabat\\main\\java\\Talabat\\Data\\Items.txt");
@@ -69,46 +102,13 @@ public class hell extends Application {
             i = 0;
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
-                User.getUsers().get(Integer.parseInt(data[0])).addCreditCard(data[1] , Integer.parseInt(data[2]), data[3], data[4]);
+                User.getUsers().get(Integer.parseInt(data[0])).addCreditCard(data[1], Integer.parseInt(data[2]), data[3], data[4]);
                 i++;
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
-        }
-    }
-
-    public static void writeFiles() {
-        try {
-            FileWriter myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
-            for (User user : User.getUsers()) {
-                myWriter.write(user.getId() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
-                        + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
-                myWriter.write("\n");
-                System.out.println(1);
-            }
-            myWriter.close();
-
-            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userAddress.txt");
-            for (User user : User.getUsers()) {
-                for (String address : user.getAddress()) {
-                    System.out.println(address);
-                    myWriter.write(user.getId() + "," + address);
-                    myWriter.write("\n");
-                }
-            }
-            myWriter.close();
-            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userCreditCard");
-            for (CreditCard creditcard : CreditCard.getCreditCards()) {
-                myWriter.write(creditcard.getCardNumber() + "," + creditcard.getCardholderName() + "," + creditcard.getCvv() + "," + creditcard.getExpirationDate());
-                myWriter.write("\n");
-                System.out.println(1);
-            }
-            myWriter.close();
-
-        } catch (IOException exception) {
-            System.out.println(exception.getMessage());
         }
     }
 

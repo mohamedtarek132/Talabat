@@ -54,10 +54,10 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
-    public void SwitchTOSighInPage(ActionEvent event) throws IOException
-    {
+
+    public void SwitchTOSighInPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../Fxmls/SignIn.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

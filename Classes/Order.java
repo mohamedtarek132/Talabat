@@ -7,11 +7,11 @@ public class Order {
     private final Cart cart;
     private final String paymentMethod;
     private final Payment payment;
-    private String orderStatus;
-    private String orderTime;
     private final String preferredDeliveryTime;
     private final User user;
     private final String userInstructions;
+    private String orderStatus;
+    private String orderTime;
     private Review review;
 
     public Order(Cart cart, String paymentMethod, Payment payment, String preferredDeliveryTime,

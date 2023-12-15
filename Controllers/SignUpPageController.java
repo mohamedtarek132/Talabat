@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpPageController implements Initializable {
+    private final User user = new Customer();
     @FXML
     private TextField email;
     @FXML
@@ -55,7 +56,6 @@ public class SignUpPageController implements Initializable {
     private Text tying;
     @FXML
     private ChoiceBox<String> genderChoiceBox;
-    private final User user = new Customer();
 
     @FXML
     public void signUp(ActionEvent event) {
@@ -63,7 +63,7 @@ public class SignUpPageController implements Initializable {
         long phoneNumber1 = 0;
         try {
             user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
-                    phoneNumber.getText(), country.getText(), address.getText());
+                    phoneNumber.getText(), country.getText(), address.getText(), true);
             tying.setOpacity(1);
             switchToMainMenu(event);
             UserInformationPageController.setUser(user);
@@ -145,6 +145,7 @@ public class SignUpPageController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToSignIn(ActionEvent ae) throws IOException {
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
