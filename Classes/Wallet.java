@@ -1,31 +1,38 @@
 package Talabat.Classes;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet {
-    private User user;
-    private double baLanCe;
-    List<Payment> Transaction = new ArrayList<>();
+    private double balance;
+   private User user;
 
+   private List<Payment> transaction;
+  public static   List<Wallet>wallets=new ArrayList<>();
 
-    public Wallet(User user, double baLanCe) {
-        this.baLanCe = baLanCe;
-        this.user = user;
-        this.Transaction = new ArrayList<>();
+    public Wallet(double balance ){
+        this.balance =balance;
+        this.user=null;
+        this.transaction =new ArrayList<>();
 
+    }
+    public Wallet(User user,double balance){
+        this.balance=balance;
+        this.user=user;
     }
 
     public Wallet() {
+        this.balance = 0;
+        this.user = null;
+        this.transaction = new ArrayList<>();
 
     }
 
     public double getBalance() {
-        return baLanCe;
+        return balance;
     }
 
     public void setBalance(double baLanCe) {
-        this.baLanCe = baLanCe;
+        this.balance = baLanCe;
     }
 
     public User getUser() {
@@ -37,23 +44,31 @@ public class Wallet {
     }
 
     public void addFunds(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Funds added successfully.");
 
-        this.baLanCe += amount;
-
-    }
-
-    public Boolean deductFunds(double amount) {
-        if (this.baLanCe >= amount) {
-            this.baLanCe -= amount;
-
-            return true;
-        } else {
-            return false;
+        }
+        else{
+            System.out.println("Invalid amount for adding funds.");
         }
     }
+    public Boolean deductFunds(double amount) {
+            if (this.balance >= amount) {
+                this.balance -= amount;
+                System.out.println("Funds deducted successfully. ");
+                return true;
+            } else {
+                System.out.println("Invalid amount");
+                return false;
+            }
+        }
 
     public List<Payment> getTransaction() {
-        return Transaction;
+        return transaction;
+    }
+    public void setWallets(int index ,double baLanCe){
+        wallets.add(new Wallet(balance));
     }
 
 
