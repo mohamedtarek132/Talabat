@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Creditcard {
+public class CreditCard {
 
     private String cardnumber;
         private int cvv;
@@ -15,16 +15,21 @@ public class Creditcard {
 
 
         private String expirationdate;
-        public static List<Creditcard>creditcards=new ArrayList<>();
 
-        public Creditcard(String cardnumber,  int cvv, String cardholdername, String expirationdate) {
+    public static List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    private static List<CreditCard> creditCards =new ArrayList<>();
+
+        public CreditCard(String cardnumber, int cvv, String cardholdername, String expirationdate) {
             this.cvv = cvv;
             this.cardnumber = cardnumber;
             this.expirationdate = expirationdate;
             this.type = identifyCreditCardType(cardnumber);
         }
 
-    public Creditcard() {
+    public CreditCard() {
 
     }
 
@@ -90,7 +95,7 @@ public class Creditcard {
             return c;
         }
     private boolean isCardExist(String cardnumber) {
-        for (Creditcard existingCard : creditcards) {
+        for (CreditCard existingCard : creditCards) {
             if (existingCard.getCardNumber().equals(cardnumber)) {
                 return true;
             }
@@ -110,7 +115,7 @@ public class Creditcard {
             System.out.println("This card already exists.");
             return;
         }
-        creditcards.add(new Creditcard(cardnumber, cvv, cardholdername, expirationdate));
+        creditCards.add(new CreditCard(cardnumber, cvv, cardholdername, expirationdate));
         user.addCreditCard(cardnumber,cvv,cardholdername,expirationdate);
     }
 

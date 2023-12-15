@@ -1,5 +1,6 @@
 package Talabat;
 
+import Talabat.Classes.CreditCard;
 import Talabat.Classes.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,22 +46,31 @@ public class hell extends Application {
 
 
 
-file = new File("D:\\Talabat\\Talabat\\main\\java\\Talabat\\Data\\Items.txt");
+//file = new File("D:\\Talabat\\Talabat\\main\\java\\Talabat\\Data\\Items.txt");
+//            scanner = new Scanner(file);
+//            i = 0;
+//            while (scanner.hasNextLine()) {
+//                String[] data = scanner.nextLine().split(",");
+//                Item.setItem(data[0], Integer.parseInt(data[1]), data[2], Integer.parseInt(data[3]), data[4]);
+//                i++;
+//            }
+//            scanner.close();
+//
+//
+//
+//
+//
+//
+//
+            }
+            scanner.close();
+            file = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userCreditCard");
             scanner = new Scanner(file);
             i = 0;
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
-                Item.setItem(data[0], Integer.parseInt(data[1]), data[2], Integer.parseInt(data[3]), data[4]);
+                User.getUsers().get(Integer.parseInt(data[0])).addCreditCard(data[1] , Integer.parseInt(data[2]), data[3], data[4]);
                 i++;
-            }
-            scanner.close();
-
-
-
-
-
-
-
             }
             scanner.close();
         } catch (FileNotFoundException e) {
@@ -89,6 +99,14 @@ file = new File("D:\\Talabat\\Talabat\\main\\java\\Talabat\\Data\\Items.txt");
                 }
             }
             myWriter.close();
+            myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userCreditCard");
+            for (CreditCard creditcard : CreditCard.getCreditCards()) {
+                myWriter.write(creditcard.getCardNumber() + "," + creditcard.getCardholderName() + "," + creditcard.getCvv() + "," + creditcard.getExpirationDate());
+                myWriter.write("\n");
+                System.out.println(1);
+            }
+            myWriter.close();
+
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }

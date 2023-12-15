@@ -4,3 +4,5 @@
 3,66 shar3 el mt3ntazeen
 4,77 shar3 el ta3baneen
 5,df
+6,d
+7,d

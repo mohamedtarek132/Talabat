@@ -122,8 +122,6 @@ public abstract class User {
                 break;
             }
         }
-
-
         if (first_name.isEmpty()) {
             errors += "first name";
         }
@@ -160,7 +158,7 @@ public abstract class User {
         }
         if (email.isEmpty()) {
             errors += "email";
-        } else if (!email.contains("@") && !email.contains(".com")) {
+        } else if (!email.contains("@") || !email.contains(".com")) {
             errors += "@ or .com";
         } else if (foundEmail) {
             errors += "same e";
