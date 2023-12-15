@@ -14,7 +14,14 @@ public class Controller {
     private Scene scene;
     private Parent root;
 
-
+    public void SwitchTOSighInPage(ActionEvent event) throws IOException
+    {
+        root = FXMLLoader.load(getClass().getResource("SignInScene.fxml"));
+        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void switchToMainMenuScene(ActionEvent event) throws IOException
     {
         root = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
