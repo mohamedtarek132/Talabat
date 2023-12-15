@@ -62,8 +62,8 @@ public class Item {
         return reviews;
     }
 
-    public void setReviews(ArrayList<Review> reviews) {
-        this.reviews = reviews;
+    public void setReviews(Review reviews) {
+        this.reviews.add(reviews);
     }
 
     public ArrayList<Item> getOptionalToppings() {

@@ -33,7 +33,7 @@ public class Customer extends User {
                 nReviews.get(i).setDate(New_Date);
             }
         }
-        current_item.setReviews(nReviews);
+        //current_item.setReviews(nReviews);
     }
 
     public void makeReview(Restaurant current_rest, User current_user, String comment, int rate) {

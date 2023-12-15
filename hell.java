@@ -80,7 +80,6 @@ public class hell extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Fxmls/SignIn.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hell");
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }

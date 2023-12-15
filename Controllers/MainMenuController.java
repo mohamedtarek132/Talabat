@@ -48,8 +48,7 @@ public class MainMenuController {
     }
 
     public void switchToUserInfoScene(ActionEvent event) throws IOException {
-        System.out.println(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
-        root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPage.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
