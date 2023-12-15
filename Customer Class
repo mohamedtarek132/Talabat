@@ -1,155 +1,137 @@
-import java.time.LocalDate;
 package Talabat;
 
-public class Customer extends User
-{
-  public void addItemToCart(Cart c_cart, Item c_item, int quant)
-  {
-    c_item.qunatityInOrder = setquantityInOrder(quant);
-    Item [] nItems = c_cart.getItems();
-    int size = nItems.length;
-    for(int i = 0; i < size; i++)
-    {
-      if (nItems == NULL)
-      {
-        nItems[i] = c_item;
-      }
-    }
-    c_item.setItems(nItems);
-  }
-  
-  public Order makeOrder(Cart c_cart, Payment paym, int orderTime,String user_instructions)
-  {
-    Order c_order;
-    c_order.setCart(c_cart);
-    c_order.setpayementMethod(paym.payementMethod);
-    c_order.setpayementStatus(paym.payementStatus);
-    c_order.setuser(paym.user);
-    c_order.setoderTime(orderTime);
-    c_order.setuserInstructions(user_instructions);
-    return c_order;
-  }
+import Talabat.Exceptions.NotAdminException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
-  public void makeReview (Item c_item, User c_user, String comment, int rate)
-  {
-    Review [] nReviews = c_item.getReviews();
-    int size = nReviews.length;
-    LocalDate date = LocalDate.now();
-    for (int i = 0; i < size; i++)
+public class Customer extends User {
+    public void addItemToCart(Cart current_cart, Item current_item, int quantity)
     {
-      if (nReviews[i] == NULL)
-      {
-        nReviews[i].rating = rate;
-        nReviews[i].comment = comment;
-        nReviews[i].userId = c_user.getId();
-        nReviews[i].date = date;
-      }
+        current_item.setQuantityInOrder(quantity);
+        ArrayList<Item> nItems = current_cart.getItems();
+        nItems.add(current_item);
     }
-    c_item.setReviews(nReviews);
-  }
-  
-  public void makeReview (Restaurant c_rest, User c_user, String comment, int rate)
-  {
-    Review [] nReviews = c_rest.getReviews();
-    int size = nReviews.length;
-    LocalDate date = LocalDate.now();
-    for (int i = 0; i < size; i++)
-    {
-      if (nReviews[i] == NULL)
-      {
-        nReviews[i].rating = rate;
-        nReviews[i].comment = comment;
-        nReviews[i].userId = c_user.getId();
-        nReviews[i].date = date;
-      }
-    }
-    c_rest.setReviews(nReviews);
-  }
 
-  public void makeReview (Order c_order, User c_user, String comment, int rate)
-  {
-    Review [] nReviews = c_order.getReviews();
-    int size = nReviews.length;
-    LocalDate date = LocalDate.now();
-    for (int i = 0; i < size; i++)
-    {
-      if (nReviews[i] == NULL)
-      {
-        nReviews[i].rating = rate;
-        nReviews[i].comment = comment;
-        nReviews[i].userId = c_user.getId();
-        nReviews[i].date = date;
-      }
+    public Order makeOrder(Cart current_cart, Payment payment, String orderTime,User user, String user_instructions) {
+        Order c_order = new Order(current_cart,payment.getPayment_Method(), payment, orderTime,user, user_instructions);
+        return c_order;
     }
-    c_order.setReviews(nReviews);
-  }
-  public void removeItemFromCart(Cart c_cart, Item c_item)
-  {
-    Item [] nItems = c_cart.getItems();
-    int size = nItems.length;
-    Item [] cItems = new Item[size - 1];
-    for (int i = 0; i < size; i++)
+
+    public void makeReview(Item current_item, User current_user, String comment, int rate)
     {
-      if (nItems[i].id.equals(c_item.getId()))
-      {
-        nItems[i] = NULL;
-      }
+        Review review = new Review();
+        LocalDate date = LocalDate.now();
+        String New_Date = date.toString();
+        review.setRating(rate);
+        review.setComment(comment);
+        review.setUser_id(current_user.getId());
+        review.setRating(rate);
+        review.setDate(New_Date);
+        current_item.setReviews(review);
     }
-    for (int i = 0; i < size; i++)
+
+    public void makeReview(Restaurant current_rest, User current_user, String comment, int rate)
     {
-      if (nItems[i] != NULL)
-      {
-        cItems[i] = nItems[i];
-      }
+        Review review = new Review();
+        LocalDate date = LocalDate.now();
+        String New_Date = date.toString();
+        review.setRating(rate);
+        review.setComment(comment);
+        review.setUser_id(current_user.getId());
+        review.setRating(rate);
+        review.setDate(New_Date);
+        current_rest.setReviews(review);
     }
-    c_cart.setItems(cItems);
-  }
-  
-  public void removeItemFromCart(Cart c_cart, Item c_item, int quant)
-  {
-    Item [] nItems = c_cart.getItems();
-    int size = nItems.length;
-    int c_quant = c_item.getquantityInOrder();
-    for (int i = 0; i < size; i++)
+
+    public void makeReview(Order current_order, User current_user, String comment, int rate)
     {
-      if (nItems[i].id.equals(c_item.getId()))
-      {
-        c_quant = c_quant - quant;
-        nItems[i].qunatityInOrder = c_quant;
-      }
+        Review review = new Review();
+        LocalDate date = LocalDate.now();
+        String New_Date = date.toString();
+        review.setRating(rate);
+        review.setComment(comment);
+        review.setUser_id(current_user.getId());
+        review.setRating(rate);
+        review.setDate(New_Date);
+        current_order.setReview(review);
     }
-    c_cart.setItems(nItems);
-  }
-  
-  public void cancelOrder(order ord)
-  {
-    ord.deleteOrder();
-  }
-  
-  public String gtOrderStatus(Order c_order)
-  {
-    String status = c_order.getOrderStatus();
-    return status;
-  }
-  
-  public Item[] searchForItem(String name)
-  {
-    Item c_item;
-    Item [] nitems = c_item.getItems();
-    int size = nitems.length;
-    Item [] vItems = new Item [size];
-    int current = 0;
-    for (int i = 0; i < size; i++)
+
+    public void removeItemFromCart(Cart current_cart, Item current_item) {
+        ArrayList<Item> nItems = current_cart.getItems();
+        int size = nItems.size();
+        for (int i = 0; i < size; i++)
+        {
+            if (nItems.get(i).getId().equals(current_item.getId()))
+            {
+                nItems.set(i, null);
+            }
+        }
+        for (int i = 0; i < size; i++) {
+            if (nItems.get(i) == null) {
+                nItems.remove(i);
+            }
+        }
+        current_cart.setItems(nItems);
+    }
+
+    public void removeItemFromCart(Cart current_cart, Item current_item, int quantity)
     {
-      if (nItems[i].name.equals(name))
-      {
-        vItems[current] = nItems[i];
-        current++;
-      }
+        ArrayList <Item> nItems = current_cart.getItems();
+        int size = nItems.size();
+        int current_quantity = current_item.getQuantityInOrder();
+        for (int i = 0; i < size; i++)
+        {
+            if (nItems.get(i).getId().equals(current_item.getId()))
+            {
+                current_quantity = current_quantity - quantity;
+                nItems.get(i).setQuantityInOrder(current_quantity);
+            }
+        }
+        current_cart.setItems(nItems);
     }
-    current = 0;
-    return vItems[];
-  }
-  
-  
+
+        public Payment choosePaymentMethod(CreditCard creditCard, User current_user, Cart current_cart)
+        {
+            Payment payment = new Payment();
+            LocalDate date = LocalDate.now();
+            String New_Date = date.toString();
+            payment.setPayment_Method("credit card");
+            payment.setPayment_Date(New_Date);
+            payment.setUser(current_user);
+            payment.Pay(current_cart.getTotalPrice(),creditCard);
+            return payment;
+        }
+
+        public Payment choosePaymentMethod(Wallet wallet, User current_user, Cart current_cart)
+        {
+            Payment payment = new Payment();
+            LocalDate date = LocalDate.now();
+            String New_Date = date.toString();
+            payment.setPayment_Method("wallet");
+            payment.setPayment_Date(New_Date);
+            payment.setUser(current_user);
+            payment.Pay(current_cart.getTotalPrice(),wallet);
+            return payment;
+        }
+
+        public Payment choosePaymentMethod(User current_user, Cart current_cart)
+        {
+            Payment payment = new Payment();
+            LocalDate date = LocalDate.now();
+            String New_Date = date.toString();
+            payment.setPayment_Method("cash");
+            payment.setPayment_Date(New_Date);
+            payment.setUser(current_user);
+            return payment;
+        }
+
+    public void cancelOrder(Order current_order, User user) throws NotAdminException {
+        current_order.setOrderStatus("Cancelled", user);
+    }
+
+    public String getOrderStatus(Order current_order) {
+        return current_order.getOrderStatus();
+    }
+
+
 }
