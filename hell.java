@@ -41,6 +41,26 @@ public class hell extends Application {
                 String[] data = scanner.nextLine().split(",");
                 User.setUsersAddresses(Integer.parseInt(data[0]), data[1]);
                 i++;
+
+
+
+
+file = new File("D:\\Talabat\\Talabat\\main\\java\\Talabat\\Data\\Items.txt");
+            scanner = new Scanner(file);
+            i = 0;
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                Item.setItem(data[0], Integer.parseInt(data[1]), data[2], Integer.parseInt(data[3]), data[4]);
+                i++;
+            }
+            scanner.close();
+
+
+
+
+
+
+
             }
             scanner.close();
         } catch (FileNotFoundException e) {
