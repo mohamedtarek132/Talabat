@@ -158,7 +158,7 @@ public abstract class User {
         String errors = "";
         long phoneNumber1 = 0;
         for (User user : users) {
-            if (email.equals(user.getEmail())) {
+            if (email.equals(user.getEmail()) && !email.equals(this.email)) {
                 foundEmail = true;
                 break;
             }
@@ -180,11 +180,11 @@ public abstract class User {
         } else {
             try {
                 phoneNumber1 = Long.parseLong(phoneNumber);
-                if (phoneNumber1 / (long) 1000000000 != 1) {
+                if (phoneNumber1 / (long) 1000000000 > 1 && phoneNumber1 / (long) 1000000000 < 10) {
                     errors += "not a valid number";
                 } else {
                     for (User user : users) {
-                        if (phoneNumber1 == user.getPhoneNumber()) {
+                        if (phoneNumber1 == user.getPhoneNumber() && phoneNumber1!=this.phoneNumber) {
                             errors += "same number";
                             break;
                         }
@@ -221,6 +221,15 @@ public abstract class User {
             users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
             users.get((users.size() - 1)).addAddress(address);
             users.get(users.size() - 1).setId(users.size() - 1);
+        }else{
+            users.get(id).setEmail(email);
+            users.get(id).setPassword(password);
+            users.get(id).setLastName(lastName);
+            users.get(id).setCountry(country);
+            users.get(id).setGender(gender);
+            users.get(id).setFirstName(first_name);
+            users.get(id).setPhoneNumber(phoneNumber1);
+            users.get(id).addAddress(address);
         }
         this.country = country;
         this.email = email;

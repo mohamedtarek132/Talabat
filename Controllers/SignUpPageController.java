@@ -64,7 +64,6 @@ public class SignUpPageController implements Initializable {
         try {
             user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
                     phoneNumber.getText(), country.getText(), address.getText(), true);
-            tying.setOpacity(1);
             switchToMainMenu(event);
             UserInformationPageController.setUser(user);
         } catch (SignUpException signUpException) {

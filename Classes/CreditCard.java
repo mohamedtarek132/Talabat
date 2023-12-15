@@ -103,7 +103,7 @@ public class CreditCard {
     }
 
     private boolean isCardExist(String cardnumber) {
-        for (User user: User.getUsers()) {
+        for (User user : User.getUsers()) {
             for (CreditCard existingCard : user.getCreditCards()) {
                 if (existingCard.getCardNumber().equals(cardnumber)) {
                     return true;

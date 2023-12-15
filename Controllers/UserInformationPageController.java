@@ -2,6 +2,7 @@ package Talabat.Controllers;
 
 import Talabat.Classes.CreditCard;
 import Talabat.Classes.User;
+import Talabat.Exceptions.SignUpException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
@@ -39,7 +42,28 @@ public class UserInformationPageController implements Initializable {
     private ChoiceBox<String> genderChoiceBox;
     @FXML
     private ChoiceBox<String> creditCard;
-
+    @FXML
+    private TextField editableAddress;
+    @FXML
+    private Text emailEmptyField;
+    @FXML
+    private Text firstNameEmptyField;
+    @FXML
+    private Text lastNameEmptyField;
+    @FXML
+    private Text passwordEmptyField;
+    @FXML
+    private Text genderEmptyField;
+    @FXML
+    private Text phoneNumberEmptyField;
+    @FXML
+    private Text addressEmptyField;
+    @FXML
+    private Text countryEmptyField;
+    @FXML
+    private Button confirm;
+    @FXML
+    private Button editInfoButton;
     public static void setUser(User user) {
         UserInformationPageController.user = user;
     }
@@ -58,12 +82,16 @@ public class UserInformationPageController implements Initializable {
             System.out.println(addresses);
             address.getItems().add(addresses);
         }
-        creditCard.setValue(user.getCreditCards().get(0).getCardNumber());
+        if(!user.getCreditCards().isEmpty()) {
+            creditCard.setValue(user.getCreditCards().get(0).getCardNumber());
+        }
         for (CreditCard cardNumber : user.getCreditCards()) {
             creditCard.getItems().add(cardNumber.getCardNumber());
             System.out.println(cardNumber.getCardNumber());
             System.out.println(1);
         }
+        editableAddress.setVisible(false);
+        confirm.setVisible(false);
 //        email.setFocusTraversable(false);
     }
 
@@ -85,6 +113,8 @@ public class UserInformationPageController implements Initializable {
         firstName.setEditable(value);
         lastName.setEditable(value);
         genderChoiceBox.getItems().addAll("Male", "Female");
+        confirm.setVisible(true);
+        editInfoButton.setVisible(false);
     }
 
     public void switchToCreditCard(ActionEvent event) throws IOException {
@@ -95,5 +125,85 @@ public class UserInformationPageController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void addAddress(ActionEvent event) {
+        address.setDisable(true);
+        address.setOpacity(0);
+        editableAddress.setVisible(true);
+    }
+
+    public void confirm(ActionEvent event) {
+        String exception = "";
+        long phoneNumber1 = 0;
+        try {
+            user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
+                    phoneNumber.getText(), country.getText(), editableAddress.getText(), false);
+            switchToMainMenu(event);
+            UserInformationPageController.setUser(user);
+            confirm.setVisible(false);
+            editInfoButton.setVisible(true);
+        } catch (SignUpException signUpException) {
+            exception = signUpException.getMessage();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (exception.contains("first name")) {
+            firstNameEmptyField.setOpacity(1);
+        } else {
+            firstNameEmptyField.setOpacity(0);
+        }
+        if (exception.contains("last name")) {
+            lastNameEmptyField.setOpacity(1);
+        } else {
+            lastNameEmptyField.setOpacity(0);
+        }
+        if (exception.contains("password")) {
+            passwordEmptyField.setOpacity(1);
+        } else {
+            passwordEmptyField.setOpacity(0);
+        }
+        if (exception.contains("country")) {
+            countryEmptyField.setOpacity(1);
+        } else {
+            countryEmptyField.setOpacity(0);
+        }
+        if (exception.contains("gender")) {
+            genderEmptyField.setOpacity(1);
+        } else {
+            genderEmptyField.setOpacity(0);
+        }
+        if (exception.contains("email")) {
+            emailEmptyField.setText("This field can't be empty!");
+            emailEmptyField.setOpacity(1);
+        } else if (exception.contains("@ or .com")) {
+            emailEmptyField.setText("Please enter a valid email!");
+            emailEmptyField.setOpacity(1);
+        } else if (exception.contains("same e")) {
+            emailEmptyField.setText("This email is used by another user!");
+            emailEmptyField.setOpacity(1);
+        } else {
+            emailEmptyField.setOpacity(0);
+        }
+        if (exception.contains("phone number")) {
+            phoneNumberEmptyField.setText("This field can't be empty!");
+            phoneNumberEmptyField.setOpacity(1);
+        } else if (exception.contains("char in number")) {
+            phoneNumberEmptyField.setText("You can not enter characters here only numbers");
+            phoneNumberEmptyField.setOpacity(1);
+        } else if (exception.contains("not a valid number")) {
+            phoneNumberEmptyField.setText("Please eneter a valid number");
+            phoneNumberEmptyField.setOpacity(1);
+        } else if (exception.contains("same number")) {
+            phoneNumberEmptyField.setText("This number is used by another user!");
+            phoneNumberEmptyField.setOpacity(1);
+        } else {
+            phoneNumberEmptyField.setOpacity(0);
+        }
+        if (exception.contains("address")) {
+            addressEmptyField.setOpacity(1);
+        } else {
+            addressEmptyField.setOpacity(0);
+        }
     }
 }
