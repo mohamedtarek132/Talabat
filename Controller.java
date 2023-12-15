@@ -11,7 +11,9 @@ import java.io.IOException;
 
 public class Controller {
     private Stage stage;
+    
     private Scene scene;
+    
     private Parent root;
 
     public void SwitchTOSighInPage(ActionEvent event) throws IOException
@@ -58,6 +60,15 @@ public class Controller {
     public void switchToUserInfoScene(ActionEvent event) throws IOException
     {
         root = FXMLLoader.load(getClass().getResource("UserInfoScene.fxml"));
+        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToWalletScene(ActionEvent event) throws IOException
+    {
+        root = FXMLLoader.load(getClass().getResource("WalletScene.fxml"));
         stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
