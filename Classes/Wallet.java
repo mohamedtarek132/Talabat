@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet {
-   private User user;
+    private User user;
     private double baLanCe;
-    List<Payment>Transaction=new ArrayList<>();
+    List<Payment> Transaction = new ArrayList<>();
 
 
-    public Wallet(User user,double baLanCe ){
-        this.baLanCe=baLanCe;
-        this.user=user;
-        this.Transaction=new ArrayList<>();
+    public Wallet(User user, double baLanCe) {
+        this.baLanCe = baLanCe;
+        this.user = user;
+        this.Transaction = new ArrayList<>();
 
     }
 
@@ -44,14 +44,14 @@ public class Wallet {
     }
 
     public Boolean deductFunds(double amount) {
-            if (this.baLanCe >= amount) {
-                this.baLanCe -= amount;
+        if (this.baLanCe >= amount) {
+            this.baLanCe -= amount;
 
-                return true;
-            } else {
-                return false;
-            }
+            return true;
+        } else {
+            return false;
         }
+    }
 
     public List<Payment> getTransaction() {
         return Transaction;

@@ -82,7 +82,7 @@ public class Restaurant {
         return reviews;
     }
 
-    public void setReviews(Review reviews)  {
+    public void setReviews(Review reviews) {
         this.reviews.add(reviews);
     }
 

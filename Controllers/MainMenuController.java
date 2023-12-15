@@ -15,44 +15,42 @@ public class MainMenuController {
     private Parent root;
 
 
-    public void switchToMainMenuScene(ActionEvent event) throws IOException
-    {
+    public void switchToMainMenuScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToRestaurantScene(ActionEvent event) throws IOException
-    {
+    public void switchToRestaurantScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("RestaurantScene.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToOrderScene(ActionEvent event) throws IOException
-    {
+
+    public void switchToOrderScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("OrderScene.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToCartScene(ActionEvent event) throws IOException
-    {
+
+    public void switchToCartScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../Fxmls/SignUp.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToUserInfoScene(ActionEvent event) throws IOException
-    {
+
+    public void switchToUserInfoScene(ActionEvent event) throws IOException {
         System.out.println(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
         root = FXMLLoader.load(getClass().getResource("../Fxmls/UserInformationPageController.fxml"));
-        stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

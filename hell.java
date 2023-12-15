@@ -21,7 +21,8 @@ public class hell extends Application {
         AnchorPane d = new AnchorPane();
         writeFiles();
     }
-    public void readingFiles(){
+
+    public void readingFiles() {
         try {
             File file = new File("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
             Scanner scanner = new Scanner(file);
@@ -38,7 +39,7 @@ public class hell extends Application {
             i = 0;
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
-                User.setUsersAddresses(Integer.parseInt(data[0]),data[1]);
+                User.setUsersAddresses(Integer.parseInt(data[0]), data[1]);
                 i++;
             }
             scanner.close();
@@ -47,30 +48,32 @@ public class hell extends Application {
             e.printStackTrace();
         }
     }
-    public static void writeFiles(){
+
+    public static void writeFiles() {
         try {
             FileWriter myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userInfo.txt");
-            for (User user: User.getUsers()) {
-                myWriter.write(user.getId()+","+user.getFirstName()+","+ user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
-                         + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
+            for (User user : User.getUsers()) {
+                myWriter.write(user.getId() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getEmail() + "," + user.getPassword()
+                        + "," + user.getGender() + "," + user.getPhoneNumber() + "," + user.getCountry());
                 myWriter.write("\n");
                 System.out.println(1);
             }
             myWriter.close();
 
             myWriter = new FileWriter("C:\\Users\\hp\\Documents\\Programming projects\\Java Projects\\Talabat\\Data\\userAddress.txt");
-            for (User user: User.getUsers()){
-                for(String address: user.getAddress()){
+            for (User user : User.getUsers()) {
+                for (String address : user.getAddress()) {
                     System.out.println(address);
                     myWriter.write(user.getId() + "," + address);
                     myWriter.write("\n");
                 }
             }
             myWriter.close();
-        }catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         readingFiles();

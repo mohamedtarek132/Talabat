@@ -15,8 +15,8 @@ public class Customer extends User {
         }
     }
 
-    public Order makeOrder(Cart current_cart, Payment payment, String orderTime,User user, String user_instructions) {
-        Order c_order = new Order(current_cart,payment.getPayment_Method(), payment, orderTime,user, user_instructions);
+    public Order makeOrder(Cart current_cart, Payment payment, String orderTime, User user, String user_instructions) {
+        Order c_order = new Order(current_cart, payment.getPayment_Method(), payment, orderTime, user, user_instructions);
         return c_order;
     }
 

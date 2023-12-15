@@ -15,8 +15,9 @@ public abstract class User {
     private ArrayList<String> address = new ArrayList<>();
     private String country;
     private int id;
-    private ArrayList<CreditCard> creditCards = new ArrayList<>();
-    private static ArrayList<User> users = new ArrayList<>();
+    private final ArrayList<CreditCard> creditCards = new ArrayList<>();
+    private static final ArrayList<User> users = new ArrayList<>();
+
     public String getFirstName() {
         return firstName;
     }
@@ -216,12 +217,12 @@ public abstract class User {
         if (!found) {
             throw new EmailOrPasswordException();
         }
-        if (index > 0){
-             user = new Customer();
+        if (index > 0) {
+            user = new Customer();
         } else {
-             user = new Admin();
+            user = new Admin();
         }
-        user.address= users.get(index).address;
+        user.address = users.get(index).address;
         user.country = users.get(index).country;
         user.email = users.get(index).email;
         user.gender = users.get(index).gender;
@@ -252,7 +253,7 @@ public abstract class User {
 
     public static void setUsers(int index, String first_name, String lastName, String email,
                                 String password, String gender, long phoneNumber, String country) {
-        if(index < 0){
+        if (index < 0) {
             users.add(new Admin());
         } else {
             users.add(new Customer());
@@ -266,7 +267,8 @@ public abstract class User {
         users.get(index).country = country;
         users.get(index).id = index;
     }
-    public static void setUsersAddresses(int index, String address){
+
+    public static void setUsersAddresses(int index, String address) {
         users.get(index).addAddress(address);
     }
 

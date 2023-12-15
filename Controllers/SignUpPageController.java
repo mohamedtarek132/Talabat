@@ -48,7 +48,7 @@ public class SignUpPageController implements Initializable {
     private Text tying;
     @FXML
     private ChoiceBox<String> genderChoiceBox;
-    private User user ;
+    private User user;
 
     @FXML
     public void signUp(ActionEvent event) {
