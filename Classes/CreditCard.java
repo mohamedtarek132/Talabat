@@ -1,20 +1,16 @@
 package Talabat.Classes;
-
 import javafx.fxml.FXML;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CreditCard {
 
+    private static User user;
     private String cardnumber;
     private int cvv;
     private String cardholdername;
-    //(visa,mastercard)نوع البطاقه
     private String type;
-    private User user;
     private String expirationdate;
 
     public CreditCard(String cardnumber, int cvv, String cardholdername, String expirationdate) {
@@ -30,7 +26,8 @@ public class CreditCard {
 
     }
 
-    public static void setcreditcard(int index, String datum, String datum1, String datum2, String datum3) {
+    public static void setUser(User user1) {
+        user = user1;
     }
 
     @FXML
@@ -91,15 +88,13 @@ public class CreditCard {
     }
 
     private Boolean IsValidCardNumber(String cardnumber) {
-        boolean n;
-        n = !cardnumber.isEmpty() && cardnumber.matches("\\d+") && (cardnumber.length() == 16);
-        return n;
+        return !cardnumber.isEmpty() && cardnumber.matches("\\d+") && (cardnumber.length() == 16);
     }
 
     private Boolean IsValidCVV(int cvv) {
-        String cvvstr = String.valueOf(cvv);
-        boolean c = !cvvstr.isEmpty() && cvvstr.length() == 3;
-        return c;
+        String cvv_str = String.valueOf(cvv);
+        return cvv_str.length() == 3;
+
     }
 
     private boolean isCardExist(String cardnumber) {
@@ -166,3 +161,4 @@ public class CreditCard {
     }
 
 }
+
