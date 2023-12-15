@@ -1,6 +1,8 @@
 package Talabat.Classes;
 import javafx.fxml.FXML;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,23 +99,57 @@ public class Creditcard {
         }
         return false;
     }
+    private boolean isValidDateFormat(String expirationdate) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
+            LocalDate.parse(expirationdate, formatter);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean isExpired(String expirationdate) {
+        if (!isValidDateFormat(expirationdate)) {
+            return false;
+        }
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
+        LocalDate expirationDate = LocalDate.parse(expirationdate, formatter);
+        return currentDate.isAfter(expirationDate);
+    }
     public  void  setcreditcard(int index, String cardnumber, int cvv, String cardholdername, String expirationdate) {
-        if (!IsValidCardNumber(cardnumber)) {
-            System.out.println("Invalid card number, The card number should be a 16-digit numeric value.");
-            return;
-        }
-        if (!IsValidCVV(cvv)) {
-            System.out.println("Invalid CVV, The CVV should be a 3-digit numeric value.");
-            return;
-        }
-        if(isCardExist(cardnumber )){
-            System.out.println("This card already exists.");
-            return;
-        }
-        creditcards.add(new Creditcard(cardnumber, cvv, cardholdername, expirationdate));
-        user.addCreditCard(cardnumber,cvv,cardholdername,expirationdate);
+       try {
+
+
+           if (!IsValidCardNumber(cardnumber)) {
+               throw new Exception("Invalid card number, The card number should be a 16-digit numeric value.");
+           }
+           if (!IsValidCVV(cvv)) {
+               throw new Exception("Invalid CVV, The CVV should be a 3-digit numeric value.");
+           }
+           if (isCardExist(cardnumber)) {
+               throw new Exception("This card already exists.");
+
+           }
+           if (!isValidDateFormat(expirationdate)) {
+               throw new Exception("Invalid date format,Please use MM/yy format.");
+           }
+
+           if (isExpired(expirationdate)) {
+               throw new Exception("The credit card has expired.");
+           }
+
+           if (user == null) {
+               throw new Exception("User is not initialized,Please set a user before adding a credit card.");
+           }
+
+           creditcards.add(new Creditcard(cardnumber, cvv, cardholdername, expirationdate));
+           user.addCreditCard(cardnumber, cvv, cardholdername, expirationdate);
+       }
+       catch (Exception E){
+           System.out.println("Error"+E);
+       }
     }
 
 }
-
-
