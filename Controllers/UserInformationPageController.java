@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -64,6 +65,17 @@ public class UserInformationPageController implements Initializable {
     private Button confirm;
     @FXML
     private Button editInfoButton;
+    @FXML
+    private Rectangle areYouSurePage;
+    @FXML
+    private Button yesButton;
+    @FXML
+    private Button noButton;
+    @FXML
+    private Text text1;
+    @FXML
+    private Text text2;
+
     public static void setUser(User user) {
         UserInformationPageController.user = user;
     }
@@ -82,7 +94,7 @@ public class UserInformationPageController implements Initializable {
             System.out.println(addresses);
             address.getItems().add(addresses);
         }
-        if(!user.getCreditCards().isEmpty()) {
+        if (!user.getCreditCards().isEmpty()) {
             creditCard.setValue(user.getCreditCards().get(0).getCardNumber());
         }
         for (CreditCard cardNumber : user.getCreditCards()) {
@@ -92,7 +104,11 @@ public class UserInformationPageController implements Initializable {
         }
         editableAddress.setVisible(false);
         confirm.setVisible(false);
-//        email.setFocusTraversable(false);
+        areYouSurePage.setVisible(false);
+        text1.setVisible(false);
+        text2.setVisible(false);
+        yesButton.setVisible(false);
+        noButton.setVisible(false);
     }
 
     public void switchToMainMenu(ActionEvent ae) throws IOException {
@@ -205,5 +221,27 @@ public class UserInformationPageController implements Initializable {
         } else {
             addressEmptyField.setOpacity(0);
         }
+    }
+
+    public void removeAddress(ActionEvent event) {
+        editableAddress.setVisible(true);
+        confirm.setVisible(true);
+        areYouSurePage.setVisible(true);
+        text1.setVisible(true);
+        text2.setVisible(true);
+        yesButton.setVisible(true);
+        noButton.setVisible(true);
+        text2.setText("this address?");
+    }
+
+    public void removeCreditCard(ActionEvent event) {
+        editableAddress.setVisible(true);
+        confirm.setVisible(true);
+        areYouSurePage.setVisible(true);
+        text1.setVisible(true);
+        text2.setVisible(true);
+        yesButton.setVisible(true);
+        noButton.setVisible(true);
+        text2.setText("this credit card?");
     }
 }
