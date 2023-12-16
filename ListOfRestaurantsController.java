@@ -47,7 +47,6 @@ public class ListOfRestaurantsController implements Initializable {
         for (int i = 0; i < numberOfRestaurants; i++){
             restaurants.add(Restaurant.getRestaurants().get(i).getName() + "\t  " +
                     Restaurant.getRestaurants().get(i).getPhoneNumber() + "\t  " +
-                    Restaurant.getRestaurants().get(i).getCategory() + "\t  " +
                     Restaurant.getRestaurants().get(i).getCategory() + "\t  Open from " +
                     Restaurant.getRestaurants().get(i).getOpeningHour() + " - " +
                     Restaurant.getRestaurants().get(i).getClosingHour() +
