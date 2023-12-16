@@ -1,26 +1,18 @@
 package Talabat.Classes;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet {
-    public static List<Wallet> wallets = new ArrayList<>();
     private double balance;
     private User user;
     private List<Payment> transaction;
 
-    public Wallet(double balance) {
+    public Wallet(double balance,User user) {
         this.balance = balance;
-        this.user = null;
+        this.user =user;
         this.transaction = new ArrayList<>();
 
     }
-
-    public Wallet(User user, double balance) {
-        this.balance = balance;
-        this.user = user;
-    }
-
     public Wallet() {
         this.balance = 0;
         this.user = null;
@@ -69,12 +61,8 @@ public class Wallet {
         return transaction;
     }
 
-    public void setWallets(int index, double baLanCe) {
-        wallets.add(new Wallet(balance));
-    }
-
-
 }
+
 
 
 
