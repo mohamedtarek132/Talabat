@@ -2,35 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.MainMenuController">
     <children>
         <Button layoutX="14.0" layoutY="72.0" mnemonicParsing="false" onAction="#switchToRestaurantScene" text="Restaurants">
+=======
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.MainMenuController">
+    <children>
+        <Button layoutX="77.0" layoutY="138.0" mnemonicParsing="false" onAction="#switchToRestaurantScene"
+                text="Restaurants">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="30.0" />
             </font>
         </Button>
-        <Label layoutX="256.0" layoutY="7.0" text="Welcome to Talabat">
+        <Label layoutX="324.0" layoutY="14.0" text="Main Menu">
             <font>
                 <Font size="30.0" />
             </font>
         </Label>
+<<<<<<< HEAD
         <Button layoutX="14.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToOrderScene" prefHeight="66.0" prefWidth="194.0" text="Order">
+=======
+        <Button layoutX="533.0" layoutY="138.0" mnemonicParsing="false" onAction="#switchToOrderScene" text="Order">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="30.0" />
             </font>
         </Button>
+<<<<<<< HEAD
         <Button layoutX="14.0" layoutY="471.0" mnemonicParsing="false" onAction="#switchToUserInfoScene" prefHeight="66.0" prefWidth="194.0" text="User Info">
+=======
+        <Button layoutX="512.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToUserInfoScene"
+                text="User Info">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="30.0" />
             </font>
         </Button>
+<<<<<<< HEAD
         <Button layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#switchToCartScene" prefHeight="66.0" prefWidth="194.0" text="Cart">
             <font>
                 <Font size="30.0" />
@@ -50,6 +64,9 @@
             </image>
         </ImageView>
         <Button layoutX="14.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchToWalletScene" prefHeight="66.0" prefWidth="194.0" text="Wallet">
+=======
+        <Button layoutX="126.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToCartScene" text="Cart">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="30.0" />
             </font>

@@ -15,16 +15,16 @@ public class MainMenuController {
     private Parent root;
 
 
-//    public void switchToMainMenuScene(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
-//        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
+    public void switchToMainMenuScene(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
+        stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void switchToRestaurantScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("RestaurantScene.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/ListOfRestaurants.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
@@ -40,7 +40,7 @@ public class MainMenuController {
     }
 
     public void switchToCartScene(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("../Fxmls/SignUp.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/SignUp.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
@@ -70,5 +70,6 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+
 
 }

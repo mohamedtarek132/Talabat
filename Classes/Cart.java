@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Cart {
+    private int cartId;
     private int numberOfItems;
 
     private ArrayList<Item> items = new ArrayList<>();
@@ -19,6 +20,16 @@ public class Cart {
     }
 
     // Getters and setters
+
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
+
     public int getNumberOfItems() {
         return numberOfItems;
     }

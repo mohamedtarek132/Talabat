@@ -137,6 +137,7 @@ public class SignUpPageController implements Initializable {
     }
 
     public void switchToMainMenu(ActionEvent ae) throws IOException {
+        System.out.println(1);
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/MainMenu.fxml"));

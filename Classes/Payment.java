@@ -9,28 +9,32 @@ public class Payment {
     private String Payment_Date;
     private User user;
 
-    public String getPayment_Method() {
-        return Payment_Method;
-    }
-
     public void setPayment_Method(String payment_Method) {
         Payment_Method = payment_Method;
-    }
-
-    public String getTransaction_id() {
-        return Transaction_id;
     }
 
     public void setTransaction_id(String transaction_id) {
         Transaction_id = transaction_id;
     }
 
-    public String getPayment_Status() {
-        return Payment_Status;
-    }
-
     public void setPayment_Status(String payment_Status) {
         Payment_Status = payment_Status;
+    }
+
+    public void setPayment_Date(String payment_Date) {
+        Payment_Date = payment_Date;
+    }
+
+    public String getPayment_Method() {
+        return Payment_Method;
+    }
+
+    public String getTransaction_id() {
+        return Transaction_id;
+    }
+
+    public String getPayment_Status() {
+        return Payment_Status;
     }
 
     public void setUser(User user) {
@@ -39,10 +43,6 @@ public class Payment {
 
     public String getPayment_Date() {
         return Payment_Date;
-    }
-
-    public void setPayment_Date(String payment_Date) {
-        Payment_Date = payment_Date;
     }
 
     // for the pay method it takes the total price and the payment method,

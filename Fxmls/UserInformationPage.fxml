@@ -4,68 +4,94 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.UserInformationPageController">
+=======
+<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.UserInformationPageController">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
     <children>
         <Text layoutX="222.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Information Page">
             <font>
                 <Font size="36.0" />
             </font>
         </Text>
+<<<<<<< HEAD
         <TextField fx:id="email" editable="false" focusTraversable="false" layoutX="382.0" layoutY="87.0" prefHeight="25.0" prefWidth="220.0" />
         <TextField fx:id="firstName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="137.0" prefHeight="25.0" prefWidth="220.0" />
         <TextField fx:id="lastName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="187.0" prefHeight="25.0" prefWidth="220.0" />
         <TextField fx:id="password" editable="false" focusTraversable="false" layoutX="382.0" layoutY="237.0" prefHeight="25.0" prefWidth="220.0" />
         <TextField fx:id="phoneNumber" editable="false" focusTraversable="false" layoutX="382.0" layoutY="337.0" prefHeight="25.0" prefWidth="220.0" />
         <Text layoutX="210.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+=======
+        <TextField fx:id="email" editable="false" focusTraversable="false" layoutX="380.0" layoutY="128.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="firstName" editable="false" focusTraversable="false" layoutX="380.0" layoutY="178.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="lastName" editable="false" focusTraversable="false" layoutX="380.0" layoutY="228.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="password" editable="false" focusTraversable="false" layoutX="380.0" layoutY="278.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="phoneNumber" editable="false" focusTraversable="false" layoutX="380.0" layoutY="378.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <Text layoutX="208.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+        <Text layoutX="208.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+        <Text layoutX="208.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+        <Text layoutX="208.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+        <Text layoutX="208.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
+        <Text layoutX="208.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+        <Text layoutX="208.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="210.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country">
+        <Text layoutX="208.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
+<<<<<<< HEAD
         <TextField fx:id="country" editable="false" focusTraversable="false" layoutX="382.0" layoutY="437.0" prefHeight="25.0" prefWidth="220.0" />
         <Button fx:id="editInfoButton" layoutX="321.0" layoutY="538.0" mnemonicParsing="false" onAction="#editInfo" prefHeight="40.0" prefWidth="122.0" text="Edit Info">
+=======
+        <TextField fx:id="country" editable="false" focusTraversable="false" layoutX="380.0" layoutY="478.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <Button fx:id="confirm" layoutX="339.0" layoutY="531.0" mnemonicParsing="false" prefHeight="40.0"
+                prefWidth="122.0" text="Confirm">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
+<<<<<<< HEAD
         <Text fx:id="wrongEmail" fill="RED" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email is used by another user!" />
         <Text fx:id="firstNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="178.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
         <Text fx:id="lastNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="226.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
@@ -76,10 +102,33 @@
         <Text fx:id="countryEmptyField" fill="#f40000" layoutX="380.0" layoutY="478.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
         <Text fx:id="emailEmptyField" fill="#f40000" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
         <Text fx:id="tying" fill="#00ff13" layoutX="63.0" layoutY="80.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="congratulations">
+=======
+        <Text fx:id="wrongEmail" fill="RED" layoutX="380.0" layoutY="169.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="Email is used by another user!"/>
+        <Text fx:id="firstNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="222.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="lastNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="269.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="passwordEmptyField" fill="#f40000" layoutX="380.0" layoutY="322.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="genderEmptyField" fill="#f40000" layoutX="380.0" layoutY="372.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="phoneNumberEmptyField" fill="#f40000" layoutX="380.0" layoutY="422.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="addressEmptyField" fill="#f40000" layoutX="380.0" layoutY="472.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="countryEmptyField" fill="#f40000" layoutX="380.0" layoutY="517.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="emailEmptyField" fill="#f40000" layoutX="380.0" layoutY="169.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="tying" fill="#00ff13" layoutX="63.0" layoutY="80.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="congratulations">
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
+<<<<<<< HEAD
         <ChoiceBox fx:id="genderChoiceBox" focusTraversable="false" layoutX="382.0" layoutY="287.0" prefHeight="25.0" prefWidth="220.0" />
         <ChoiceBox fx:id="address" focusTraversable="false" layoutX="382.0" layoutY="386.0" prefHeight="25.0" prefWidth="220.0" />
         <Button layoutX="22.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="40.0" prefWidth="122.0" text="Back">
@@ -139,5 +188,11 @@
         <Button fx:id="noButton" layoutX="427.0" layoutY="302.0" mnemonicParsing="false" onAction="#reset" prefHeight="27.0" prefWidth="43.0" text="No" />
         <Button fx:id="yesButtonAddress" layoutX="332.0" layoutY="302.0" mnemonicParsing="false" onAction="#removeAddress1" prefHeight="26.0" prefWidth="43.0" text="Yes" />
         <Button fx:id="yesButtonCreditCard" layoutX="332.0" layoutY="302.0" mnemonicParsing="false" onAction="#removeCreditCard1" prefHeight="26.0" prefWidth="43.0" text="Yes" />
+=======
+        <ChoiceBox fx:id="genderChoiceBox" focusTraversable="false" layoutX="380.0" layoutY="328.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+        <ChoiceBox fx:id="address" focusTraversable="false" layoutX="380.0" layoutY="427.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+>>>>>>> 289fd7ad20ae40c8150dba03c245eb1478bc4765
     </children>
 </AnchorPane>

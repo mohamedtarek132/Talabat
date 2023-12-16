@@ -6,7 +6,7 @@ import Talabat.Exceptions.SignUpException;
 import java.util.ArrayList;
 
 public abstract class User {
-    private static ArrayList<User> users = new ArrayList<>();
+    private static final ArrayList<User> users = new ArrayList<>();
     private String firstName;
     private String lastName;
     private String email;
