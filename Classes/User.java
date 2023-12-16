@@ -32,7 +32,7 @@ public abstract class User {
         if (!found) {
             throw new EmailOrPasswordException();
         }
-        if (index > 0) {
+        if (users.get(index).phoneNumber > 10) {
             user = new Customer();
         } else {
             user = new Admin();
@@ -52,8 +52,9 @@ public abstract class User {
 
     public static void setUsers(int index, String first_name, String lastName, String email,
                                 String password, String gender, long phoneNumber, String country) {
-        if (index < 0) {
+        if (phoneNumber < 10) {
             users.add(new Admin());
+            System.out.println(4);
         } else {
             users.add(new Customer());
         }
@@ -184,7 +185,7 @@ public abstract class User {
                     errors += "not a valid number";
                 } else {
                     for (User user : users) {
-                        if (phoneNumber1 == user.getPhoneNumber() && phoneNumber1!=this.phoneNumber) {
+                        if (phoneNumber1 == user.getPhoneNumber() && phoneNumber1 != this.phoneNumber) {
                             errors += "same number";
                             break;
                         }
@@ -221,7 +222,7 @@ public abstract class User {
             users.get((users.size() - 1)).setPhoneNumber(phoneNumber1);
             users.get((users.size() - 1)).addAddress(address);
             users.get(users.size() - 1).setId(users.size() - 1);
-        }else{
+        } else {
             users.get(id).setEmail(email);
             users.get(id).setPassword(password);
             users.get(id).setLastName(lastName);
@@ -238,7 +239,6 @@ public abstract class User {
         this.lastName = lastName;
         this.password = password;
         this.phoneNumber = phoneNumber1;
-        this.getAddress().add(address);
     }
 
     public void logOut() {

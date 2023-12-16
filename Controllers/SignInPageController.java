@@ -1,5 +1,6 @@
 package Talabat.Controllers;
 
+import Talabat.Classes.Admin;
 import Talabat.Classes.Customer;
 import Talabat.Exceptions.EmailOrPasswordException;
 import Talabat.Classes.User;
@@ -11,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -27,12 +27,17 @@ public class SignInPageController {
     private User user;
 
     @FXML
-    public void signIn(ActionEvent ae) {
+    public void signIn(ActionEvent event) {
         try {
             user = User.signIn(email.getText(), password.getText());
             errorMessage.setOpacity(0);
             UserInformationPageController.setUser(user);
-            switchTo(ae);
+            if(user instanceof Customer){
+                switchToMainMenu(event);
+            }else if(user instanceof Admin){
+                System.out.println(1);
+                switchToAdminDashboard(event);
+            }
         } catch (EmailOrPasswordException emailOrPasswordException) {
             errorMessage.setOpacity(1);
         } catch (IOException exception) {
@@ -49,10 +54,18 @@ public class SignInPageController {
         stage.show();
     }
 
-    public void switchTo(ActionEvent ae) throws IOException {
+    public void switchToMainMenu(ActionEvent ae) throws IOException {
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/MainMenu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToAdminDashboard(ActionEvent ae) throws IOException {
+        Stage stage;
+        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/AdminDashboard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

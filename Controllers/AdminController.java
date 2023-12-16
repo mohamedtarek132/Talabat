@@ -23,91 +23,82 @@ import java.util.ResourceBundle;
 
 
 public class AdminController implements Initializable {
-   private Restaurant restaurant =new Restaurant();
-   private Admin admin =new Admin() ;
+    Stage stage;
+    String name;
+    String category;
+    String[] address = new String[3];
+    String phonenumber;
+    float dfees;
+    int dtime;
+    private final Restaurant restaurant = new Restaurant();
+    private final Admin admin = new Admin();
     @FXML
 
     private Parent root;
     private Scene scene;
+    @FXML
+    private AnchorPane scenepane;
+    @FXML
+    private Button logout;
+    @FXML
+    private TextField t1;
+    @FXML
+    private TextField t2;
+    @FXML
+    private TextField t3;
+    @FXML
+    private TextField t4;
+    @FXML
+    private TextField t5;
+    @FXML
+    private TextField t6;
+    @FXML
+    private ChoiceBox<String> cb;
 
-@FXML
-private AnchorPane scenepane;
-@FXML
-private  Button logout;
-Stage stage;
-    public void logout(ActionEvent e)
-    {
-        stage= (Stage)scenepane.getScene().getWindow();
+    public void logout(ActionEvent e) {
+        stage = (Stage) scenepane.getScene().getWindow();
         System.out.println("logout");
         stage.close();
 
     }
 
     public void switchtoadmin(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Controllers/AdminDashboard.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/AdminDashboard.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void switchtoaddres(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Controllers/Addrest.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/Addrest.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void switchtodisres(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Controllers/Displayrest.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/Displayrest.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-
-
-    @FXML
-    private TextField t1;
-    @FXML
-    private TextField t2;
-@FXML
-    private TextField t3;
-@FXML
-    private TextField t4;
-@FXML
-    private TextField t5;
-@FXML
-    private TextField t6;
-    String name;
-    String category;
-    String []address = new String[3];
-    String phonenumber;
-    float dfees;
-    int dtime;
-
-
-    @FXML
-    private ChoiceBox<String> cb;
-
     public void saveRestaurant(ActionEvent e) throws NotAdminException, IOException {
         try {
             address[0] = t3.getText();
-           this.restaurant.setName( t1.getText(),admin);
-            this.restaurant.setCategory(t2.getText(),admin);
-            this.restaurant.setAddress(address,admin);
-            this.restaurant.setPhoneNumber( t4.getText(),admin);
-            this.restaurant.setDeliveryFee(Float.parseFloat(t5.getText()),admin);
-            this.restaurant.setDeliveryDuration(Integer.parseInt(t6.getText()),admin);
+            this.restaurant.setName(t1.getText(), admin);
+            this.restaurant.setCategory(t2.getText(), admin);
+            this.restaurant.setAddress(address, admin);
+            this.restaurant.setPhoneNumber(t4.getText(), admin);
+            this.restaurant.setDeliveryFee(Float.parseFloat(t5.getText()), admin);
+            this.restaurant.setDeliveryDuration(Integer.parseInt(t6.getText()), admin);
 
-        }catch (NumberFormatException nfe)
-        {
+        } catch (NumberFormatException nfe) {
             System.out.println("enter number in delivery fees and delivery duration");
-        }
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             System.out.println("enter all restaurant information");
         }
 
@@ -116,8 +107,8 @@ Stage stage;
         System.out.println("restaurant added successfully");
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/Controllers/AdminDashboard.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxmls/AdminDashboard.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -126,25 +117,21 @@ Stage stage;
     }
 
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try
-        {
+        try {
             cb.getItems().addAll(admin.getRestaurantNameFromAdmin());
-        }catch (NullPointerException e)
-        {
+        } catch (NullPointerException e) {
             System.out.println("null value");
         }
 
 
     }
-    public void DeleteRestaurant(ActionEvent e)  {
+
+    public void DeleteRestaurant(ActionEvent e) {
         String restName = cb.getValue();
-        if(restName != null) {
+        if (restName != null) {
             int i = 0;
             for (Restaurant r : admin.getRestaurant()) {
                 if (r.getName().equals(restName)) {
@@ -153,8 +140,7 @@ Stage stage;
                 }
                 i++;
             }
-        }
-        else {
+        } else {
             System.out.println("Please choose a value");
         }
 

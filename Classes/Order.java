@@ -13,7 +13,6 @@ public class Order {
     private String orderStatus;
     private String orderTime;
     private Review review;
-
     public Order(Cart cart, String paymentMethod, Payment payment, String preferredDeliveryTime,
                  User user, String userInstructions) {
         this.cart = cart;
@@ -22,6 +21,10 @@ public class Order {
         this.preferredDeliveryTime = preferredDeliveryTime;
         this.user = user;
         this.userInstructions = userInstructions;
+    }
+
+    public Payment getPayment() {
+        return payment;
     }
 
     public Cart getCart() {

@@ -4,6 +4,8 @@ import Talabat.Classes.CreditCard;
 import Talabat.Classes.User;
 import Talabat.Exceptions.SignUpException;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -68,13 +70,16 @@ public class UserInformationPageController implements Initializable {
     @FXML
     private Rectangle areYouSurePage;
     @FXML
-    private Button yesButton;
+    private Button yesButtonAddress;
+    @FXML
+    private Button yesButtonCreditCard;
     @FXML
     private Button noButton;
     @FXML
     private Text text1;
     @FXML
     private Text text2;
+    private boolean addAddressChecker = false;
 
     public static void setUser(User user) {
         UserInformationPageController.user = user;
@@ -107,7 +112,8 @@ public class UserInformationPageController implements Initializable {
         areYouSurePage.setVisible(false);
         text1.setVisible(false);
         text2.setVisible(false);
-        yesButton.setVisible(false);
+        yesButtonCreditCard.setVisible(false);
+        yesButtonAddress.setVisible(false);
         noButton.setVisible(false);
     }
 
@@ -144,25 +150,27 @@ public class UserInformationPageController implements Initializable {
     }
 
     public void addAddress(ActionEvent event) {
-        address.setDisable(true);
-        address.setOpacity(0);
+        address.setVisible(false);
         editableAddress.setVisible(true);
+        addAddressChecker = true;
+        editInfo(event);
     }
 
     public void confirm(ActionEvent event) {
         String exception = "";
         long phoneNumber1 = 0;
         try {
-            user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
+            if(addAddressChecker){
+                user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
                     phoneNumber.getText(), country.getText(), editableAddress.getText(), false);
-            switchToMainMenu(event);
+            }else{
+                user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
+                        phoneNumber.getText(), country.getText(), address.getValue(), false);
+            }
             UserInformationPageController.setUser(user);
-            confirm.setVisible(false);
-            editInfoButton.setVisible(true);
+            reset(event);
         } catch (SignUpException signUpException) {
             exception = signUpException.getMessage();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         if (exception.contains("first name")) {
             firstNameEmptyField.setOpacity(1);
@@ -227,7 +235,8 @@ public class UserInformationPageController implements Initializable {
         areYouSurePage.setVisible(true);
         text1.setVisible(true);
         text2.setVisible(true);
-        yesButton.setVisible(true);
+        yesButtonCreditCard.setVisible(false);
+        yesButtonAddress.setVisible(true);
         noButton.setVisible(true);
         text2.setText("this address?");
         boolean value = false;
@@ -237,21 +246,15 @@ public class UserInformationPageController implements Initializable {
         country.setEditable(value);
         firstName.setEditable(value);
         lastName.setEditable(value);
-        yesButton.setOnAction(e -> {
-            if(user.getAddress().size() >1){
-            for (String address1: user.getAddress()){
-            if (address1.equals(address.getValue())){
-                user.getAddress().remove(address1);
-            }
-        }
-            reset(e);}});
+
     }
 
     public void removeCreditCard(ActionEvent event) {
         areYouSurePage.setVisible(true);
         text1.setVisible(true);
         text2.setVisible(true);
-        yesButton.setVisible(true);
+        yesButtonCreditCard.setVisible(true);
+        yesButtonAddress.setVisible(false);
         noButton.setVisible(true);
         text2.setText("this credit card?");
 
@@ -262,33 +265,37 @@ public class UserInformationPageController implements Initializable {
         country.setEditable(value);
         firstName.setEditable(value);
         lastName.setEditable(value);
-        System.out.println("whyyyyy");
-        yesButton.setOnAction(e -> {
-            if (user.getCreditCards().size() > 1){
-            for (CreditCard cardNumber:user.getCreditCards()) {
-                if(cardNumber.getCardNumber().equals(creditCard.getValue())){
-                    user.getCreditCards().remove(cardNumber);
+
+
+    }
+
+    public void removeCreditCard1(ActionEvent event) {
+        int index = 0;
+        for(int i = 0; i < user.getCreditCards().size(); i++) {
+            if (user.getCreditCards().get(i).getCardNumber().equals(creditCard.getValue())) {
+                index = i;
+                break;
+            }
+
+        }
+        user.getCreditCards().remove(index);
+        reset(event);
+    }
+
+    public void removeAddress1(ActionEvent event) {
+        int index = 0;
+        for(int i = 0; i < user.getAddress().size(); i++) {
+                if (user.getAddress().get(i).equals(address.getValue())) {
+                    index = i;
+                    break;
                 }
-            }
-            reset(e);}});
-    }
-    public void removeCreditCard1(ActionEvent event){
-        for (CreditCard cardNumber:user.getCreditCards()) {
-            if(cardNumber.getCardNumber().equals(creditCard.getValue())){
-                user.getCreditCards().remove(cardNumber);
-            }
+
         }
+        user.getAddress().remove(index);
         reset(event);
     }
-    public void removeAddress1(ActionEvent event){
-        for (String address1: user.getAddress()){
-            if (address1.equals(address.getValue())){
-                user.getAddress().remove(address1);
-            }
-        }
-        reset(event);
-    }
-    public void reset(ActionEvent event){
+
+    public void reset(ActionEvent event) {
         email.setText(user.getEmail());
         password.setText(user.getPassword());
         phoneNumber.setText(Long.toString(user.getPhoneNumber()));
@@ -297,8 +304,8 @@ public class UserInformationPageController implements Initializable {
         lastName.setText(user.getLastName());
         genderChoiceBox.setValue(user.getGender());
         address.getItems().clear();
-        if(!user.getAddress().isEmpty()){
-        address.setValue(user.getAddress().get(0));
+        if (!user.getAddress().isEmpty()) {
+            address.setValue(user.getAddress().get(0));
         }
         for (String addresses : user.getAddress()) {
             System.out.println(addresses);
@@ -313,12 +320,16 @@ public class UserInformationPageController implements Initializable {
             System.out.println(cardNumber.getCardNumber());
             System.out.println(1);
         }
+        address.setVisible(true);
+        editInfoButton.setVisible(true);
         editableAddress.setVisible(false);
         confirm.setVisible(false);
         areYouSurePage.setVisible(false);
         text1.setVisible(false);
         text2.setVisible(false);
-        yesButton.setVisible(false);
+        yesButtonCreditCard.setVisible(false);
+        yesButtonAddress.setVisible(false);
         noButton.setVisible(false);
+        addAddressChecker = false;
     }
 }

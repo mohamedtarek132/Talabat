@@ -8,135 +8,175 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.UserInformationPageController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/20.0.1" fx:controller="Talabat.Controllers.UserInformationPageController">
     <children>
         <Text layoutX="222.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Information Page">
             <font>
-                <Font size="36.0" />
+                <Font size="36.0"/>
             </font>
         </Text>
-        <TextField fx:id="email" editable="false" focusTraversable="false" layoutX="382.0" layoutY="87.0" prefHeight="25.0" prefWidth="220.0" />
-        <TextField fx:id="firstName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="137.0" prefHeight="25.0" prefWidth="220.0" />
-        <TextField fx:id="lastName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="187.0" prefHeight="25.0" prefWidth="220.0" />
-        <TextField fx:id="password" editable="false" focusTraversable="false" layoutX="382.0" layoutY="237.0" prefHeight="25.0" prefWidth="220.0" />
-        <TextField fx:id="phoneNumber" editable="false" focusTraversable="false" layoutX="382.0" layoutY="337.0" prefHeight="25.0" prefWidth="220.0" />
+        <TextField fx:id="email" editable="false" focusTraversable="false" layoutX="382.0" layoutY="87.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="firstName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="137.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="lastName" editable="false" focusTraversable="false" layoutX="382.0" layoutY="187.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="password" editable="false" focusTraversable="false" layoutX="382.0" layoutY="237.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="phoneNumber" editable="false" focusTraversable="false" layoutX="382.0" layoutY="337.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
         <Text layoutX="210.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
         <Text layoutX="210.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
-        <TextField fx:id="country" editable="false" focusTraversable="false" layoutX="382.0" layoutY="437.0" prefHeight="25.0" prefWidth="220.0" />
-        <Button fx:id="editInfoButton" layoutX="321.0" layoutY="538.0" mnemonicParsing="false" onAction="#editInfo" prefHeight="40.0" prefWidth="122.0" text="Edit Info">
+        <TextField fx:id="country" editable="false" focusTraversable="false" layoutX="382.0" layoutY="437.0"
+                   prefHeight="25.0" prefWidth="220.0"/>
+        <Button fx:id="editInfoButton" layoutX="321.0" layoutY="538.0" mnemonicParsing="false" onAction="#editInfo"
+                prefHeight="40.0" prefWidth="122.0" text="Edit Info">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
-        <Text fx:id="wrongEmail" fill="RED" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email is used by another user!" />
-        <Text fx:id="firstNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="178.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="lastNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="226.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="passwordEmptyField" fill="#f40000" layoutX="380.0" layoutY="278.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="genderEmptyField" fill="#f40000" layoutX="380.0" layoutY="328.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="phoneNumberEmptyField" fill="#f40000" layoutX="380.0" layoutY="378.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="addressEmptyField" fill="#f40000" layoutX="380.0" layoutY="428.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="countryEmptyField" fill="#f40000" layoutX="380.0" layoutY="478.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="emailEmptyField" fill="#f40000" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!" />
-        <Text fx:id="tying" fill="#00ff13" layoutX="63.0" layoutY="80.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="congratulations">
+        <Text fx:id="wrongEmail" fill="RED" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="Email is used by another user!"/>
+        <Text fx:id="firstNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="178.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="lastNameEmptyField" fill="#f40000" layoutX="380.0" layoutY="226.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="passwordEmptyField" fill="#f40000" layoutX="380.0" layoutY="278.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="genderEmptyField" fill="#f40000" layoutX="380.0" layoutY="328.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="phoneNumberEmptyField" fill="#f40000" layoutX="380.0" layoutY="378.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="addressEmptyField" fill="#f40000" layoutX="380.0" layoutY="428.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="countryEmptyField" fill="#f40000" layoutX="380.0" layoutY="478.0" opacity="0.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="emailEmptyField" fill="#f40000" layoutX="380.0" layoutY="128.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text=" This field can't be empty!"/>
+        <Text fx:id="tying" fill="#00ff13" layoutX="63.0" layoutY="80.0" opacity="0.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="congratulations">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
-        <ChoiceBox fx:id="genderChoiceBox" focusTraversable="false" layoutX="382.0" layoutY="287.0" prefHeight="25.0" prefWidth="220.0" />
-        <ChoiceBox fx:id="address" focusTraversable="false" layoutX="382.0" layoutY="386.0" prefHeight="25.0" prefWidth="220.0" />
-        <Button layoutX="22.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="40.0" prefWidth="122.0" text="Back">
+        <ChoiceBox fx:id="genderChoiceBox" focusTraversable="false" layoutX="382.0" layoutY="287.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+        <ChoiceBox fx:id="address" focusTraversable="false" layoutX="382.0" layoutY="386.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+        <Button layoutX="22.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="40.0"
+                prefWidth="122.0" text="Back">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
         <Text layoutX="210.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit Cards">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Text>
-        <ChoiceBox fx:id="creditCard" focusTraversable="false" layoutX="382.0" layoutY="487.0" prefHeight="25.0" prefWidth="220.0" />
-        <Text fill="#09ff00" layoutX="636.0" layoutY="509.0" onMouseClicked="#switchToCreditCard" strokeType="OUTSIDE" strokeWidth="0.0" text="Add" />
-        <Text fx:id="removeCreditCard" fill="RED" layoutX="678.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" />
-        <Text fx:id="addAddress" fill="#09ff00" layoutX="636.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add" />
-        <Text fx:id="removeAddress" fill="RED" layoutX="678.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" />
-        <Button layoutX="627.0" layoutY="497.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false" onAction="#switchToCreditCard" opacity="0.43" prefHeight="5.0" prefWidth="40.0">
+        <ChoiceBox fx:id="creditCard" focusTraversable="false" layoutX="382.0" layoutY="487.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+        <Text fill="#09ff00" layoutX="636.0" layoutY="509.0" onMouseClicked="#switchToCreditCard" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="Add"/>
+        <Text fx:id="removeCreditCard" fill="RED" layoutX="678.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Remove"/>
+        <Text fx:id="addAddress" fill="#09ff00" layoutX="636.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Add"/>
+        <Text fx:id="removeAddress" fill="RED" layoutX="678.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Remove"/>
+        <Button layoutX="627.0" layoutY="497.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false"
+                onAction="#switchToCreditCard" opacity="0.43" prefHeight="5.0" prefWidth="40.0">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
-        <Button fx:id="removeCreditCard" layoutX="676.0" layoutY="496.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false" onAction="#removeCreditCard" opacity="0.43" prefHeight="5.0" prefWidth="50.0">
+        <Button fx:id="removeCreditCard" layoutX="676.0" layoutY="496.0" minHeight="15.0" minWidth="30.0"
+                mnemonicParsing="false" onAction="#removeCreditCard" opacity="0.43" prefHeight="5.0" prefWidth="50.0">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
-        <Button layoutX="627.0" layoutY="391.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false" onAction="#addAddress" opacity="0.43" prefHeight="5.0" prefWidth="40.0">
+        <Button layoutX="627.0" layoutY="391.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false"
+                onAction="#addAddress" opacity="0.43" prefHeight="5.0" prefWidth="40.0">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
-        <Button fx:id="removeAddress" layoutX="674.0" layoutY="392.0" minHeight="15.0" minWidth="30.0" mnemonicParsing="false" onAction="#removeAddress" opacity="0.43" prefHeight="5.0" prefWidth="50.0">
+        <Button fx:id="removeAddress" layoutX="674.0" layoutY="392.0" minHeight="15.0" minWidth="30.0"
+                mnemonicParsing="false" onAction="#removeAddress" opacity="0.43" prefHeight="5.0" prefWidth="50.0">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Button>
-      <TextField fx:id="phoneNumber1" editable="false" focusTraversable="false" layoutX="382.0" layoutY="386.0" prefHeight="25.0" prefWidth="220.0" visible="false" />
-      <TextField fx:id="phoneNumber2" editable="false" focusTraversable="false" layoutX="382.0" layoutY="387.0" prefHeight="25.0" prefWidth="220.0" visible="false" />
-      <TextField fx:id="editableAddress" focusTraversable="false" layoutX="382.0" layoutY="387.0" prefHeight="25.0" prefWidth="220.0" />
-      <Button fx:id="confirm" layoutX="321.0" layoutY="538.0" mnemonicParsing="false" onAction="#confirm" prefHeight="40.0" prefWidth="122.0" text="Confirm">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Rectangle fx:id="areYouSurePage" arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="200.0" layoutX="238.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="324.0" />
-      <Text fx:id="text1" layoutX="268.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to remove">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="text2" layoutX="349.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this address?">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="noButton" layoutX="427.0" layoutY="302.0" mnemonicParsing="false" onAction="#reset" prefHeight="27.0" prefWidth="43.0" text="No" />
-      <Button fx:id="yesButton" layoutX="332.0" layoutY="302.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" text="Yes" />
+        <TextField fx:id="phoneNumber1" editable="false" focusTraversable="false" layoutX="382.0" layoutY="386.0"
+                   prefHeight="25.0" prefWidth="220.0" visible="false"/>
+        <TextField fx:id="phoneNumber2" editable="false" focusTraversable="false" layoutX="382.0" layoutY="387.0"
+                   prefHeight="25.0" prefWidth="220.0" visible="false"/>
+        <TextField fx:id="editableAddress" focusTraversable="false" layoutX="382.0" layoutY="387.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+        <Button fx:id="confirm" layoutX="321.0" layoutY="538.0" mnemonicParsing="false" onAction="#confirm"
+                prefHeight="40.0" prefWidth="122.0" text="Confirm">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Rectangle fx:id="areYouSurePage" arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="200.0" layoutX="238.0"
+                   layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="324.0"/>
+        <Text fx:id="text1" layoutX="268.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Are you sure you want to remove">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="text2" layoutX="349.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this address?">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <Button fx:id="noButton" layoutX="427.0" layoutY="302.0" mnemonicParsing="false" onAction="#reset"
+                prefHeight="27.0" prefWidth="43.0" text="No"/>
+        <Button fx:id="yesButtonAddress" layoutX="332.0" layoutY="302.0" mnemonicParsing="false"
+                onAction="#removeAddress1" prefHeight="26.0" prefWidth="43.0" text="Yes"/>
+        <Button fx:id="yesButtonCreditCard" layoutX="332.0" layoutY="302.0" mnemonicParsing="false"
+                onAction="#removeCreditCard1" prefHeight="26.0" prefWidth="43.0" text="Yes"/>
     </children>
 </AnchorPane>

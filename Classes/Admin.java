@@ -1,71 +1,74 @@
-
 package Talabat.Classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import Talabat.Exceptions.NotAdminException;
 
 
 public class Admin extends User {
     User user;
     private ArrayList<Restaurant> restaurant = new ArrayList<>();
-    private Scanner input = new Scanner(System.in);
-    public Admin(){};
-    public Admin( ArrayList<Restaurant> restaurant){this.restaurant= restaurant;}
+    private final Scanner input = new Scanner(System.in);
 
-    public void setRestaurantsForAdmin(ArrayList<Restaurant>r){this.restaurant = r;}
+    public Admin() {
+    }
 
-    public ArrayList<String> getRestaurantNameFromAdmin(){
+    public Admin(ArrayList<Restaurant> restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public void setRestaurantsForAdmin(ArrayList<Restaurant> r) {
+        this.restaurant = r;
+    }
+
+    public ArrayList<String> getRestaurantNameFromAdmin() {
         ArrayList<String> names = new ArrayList<>();
-        for (Restaurant r: this.restaurant) {
+        for (Restaurant r : this.restaurant) {
             names.add(r.getName());
         }
         return names;
     }
 
-    public ArrayList<Restaurant> getRestaurant()
-    {
+    public ArrayList<Restaurant> getRestaurant() {
         return this.restaurant;
     }
 
 
-    private void handingInputs()
-    {
+    private void handingInputs() {
 
     }
 
 
-    public void deleteRestaurant(int restaurantIndex)  {
+    public void deleteRestaurant(int restaurantIndex) {
         this.restaurant.remove(restaurantIndex);
     }
 
-    public void setNewRestaurant(Restaurant restaurant) throws NotAdminException{
-        this.restaurant.add(restaurant);;
+    public void setNewRestaurant(Restaurant restaurant) throws NotAdminException {
+        this.restaurant.add(restaurant);
 
     }
-
-
 
 
     public void addItemToMenu(int restaurantIndex) throws NotAdminException { //argument in
 
         ArrayList<Item> newMenuAfterAddingItem = new ArrayList<>();
-        String string1,string2,string3,string4,string5;
-        int tempNumber = 0,id =0;
+        String string1, string2, string3, string4, string5;
+        int tempNumber = 0, id = 0;
         boolean flag = false;
 
 
         System.out.println("Enter item name");
-        string1= input.nextLine();
+        string1 = input.nextLine();
         do {
             System.out.println("Enter item price");
             try {
                 tempNumber = input.nextInt();
             } catch (Exception e) {
                 System.out.println("Enter an integer");
-                flag =true;
+                flag = true;
             }
-        }while(flag==true);
+        } while (flag);
 
 
         System.out.println("Enter item description");
@@ -73,17 +76,17 @@ public class Admin extends User {
 
         System.out.println("Enter item category");
         string3 = input.nextLine();
-        id = this.restaurant.get(tempNumber-1).getMenu().size();
+        id = this.restaurant.get(tempNumber - 1).getMenu().size();
 
-        Item newItem = new Item(string1,"dd",string2,tempNumber,string3);
+        Item newItem = new Item(string1, "dd", string2, tempNumber, string3);
         newMenuAfterAddingItem = this.restaurant.get(restaurantIndex).getMenu();
         newMenuAfterAddingItem.add(newItem);
-        this.restaurant.get(restaurantIndex).setMenu(newMenuAfterAddingItem ,user);
+        this.restaurant.get(restaurantIndex).setMenu(newMenuAfterAddingItem, user);
 
     }
 
 
-    public void removeItemFromMenu( int restaurantIndex) {
+    public void removeItemFromMenu(int restaurantIndex) {
 
         int itemIndex = 0;
 
@@ -91,7 +94,7 @@ public class Admin extends User {
 
         displayRestaurantMenu(restaurantIndex);
         itemIndex = input.nextInt();
-        if(itemIndex != 0) {
+        if (itemIndex != 0) {
             try {
                 this.restaurant.get(restaurantIndex).getMenu().remove(itemIndex);
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -105,50 +108,45 @@ public class Admin extends User {
 
     public void displayAllRestaurants() throws NotAdminException {
         int j = 0;
-        if(this.restaurant.isEmpty())
-        {
+        if (this.restaurant.isEmpty()) {
             System.out.println("No restaurant to display");
             System.out.println("Add new Restaurant ?  Press 1 (or) any key to return");
             j = input.nextInt();
             if (j == 1) {
                 // setNewRestaurant();
             }
-        }
-        else {
+        } else {
             for (Restaurant r : restaurant) {
                 System.out.println((j + 1) + " " + r.getName());  //this will be in textbox
                 j++;
             }
             System.out.println("Choose Restaurant number to preform action :Press 0 to Exit");
-            int index ;
-            int choose =input.nextInt();
-            index =choose;
-            if(choose != 0)
-            {
+            int index;
+            int choose = input.nextInt();
+            index = choose;
+            if (choose != 0) {
                 try {
-                    System.out.println("Choose Action to be done on "+this.restaurant.get(choose-1).getName() );
+                    System.out.println("Choose Action to be done on " + this.restaurant.get(choose - 1).getName());
                     System.out.println("1- view menu    2- Add Item to menu \n 3- Remove Item from menu  4- Delete Restaurant");
                     choose = input.nextInt();
-                    switch (choose)
-                    {
-                        case 1: displayRestaurantMenu(index-1);
+                    switch (choose) {
+                        case 1:
+                            displayRestaurantMenu(index - 1);
                             break;
-                        case 2: addItemToMenu(index-1);
+                        case 2:
+                            addItemToMenu(index - 1);
                             break;
-                        case 3: removeItemFromMenu(index-1);
+                        case 3:
+                            removeItemFromMenu(index - 1);
                             break;
-                        case 4: deleteRestaurant(index-1);
+                        case 4:
+                            deleteRestaurant(index - 1);
                     }
-                }catch (ArrayIndexOutOfBoundsException e)
-                {
+                } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("invalid index");
                 }
 
             }
-
-
-
-
 
 
         }
@@ -159,20 +157,18 @@ public class Admin extends User {
         try {
 
             this.restaurant.get(restaurantIndex).displayMenu();
-        }
-        catch (ArrayIndexOutOfBoundsException e)
-        {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("invalid index");
         }
 
     }
 
 
-
     public int updateItemName(int newPrice) {
 
         return newPrice;
     }
+
     public int updateItemPrice(int newPrice) {
 
         return newPrice;
@@ -198,8 +194,6 @@ public class Admin extends User {
             System.out.println("The Highest Rated Restaurant is :\n " + maxRestaurantName + "  With Rating : " + max);
         }
     }
-
-
 
 
 }
