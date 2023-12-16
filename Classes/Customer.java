@@ -1,7 +1,5 @@
 package Talabat.Classes;
 
-import Talabat.Exceptions.NotAdminException;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,47 +7,59 @@ public class Customer extends User {
     public void addItemToCart(Cart current_cart, Item current_item, int quantity) {
         current_item.setQuantityInOrder(quantity);
         ArrayList<Item> nItems = current_cart.getItems();
-        nItems.add(current_item);
+        int size = nItems.size();
+        for (int i = 0; i < size; i++) {
+            if (nItems == null) {
+                nItems.add(current_item);
+            }
+        }
     }
 
-    public Order makeOrder(Cart current_cart, Payment payment, String orderTime, User user, String user_instructions) {
-        Order c_order = new Order(current_cart, payment.getPayment_Method(), payment, orderTime, user, user_instructions);
+    public Order makeOrder(int orderId, Cart current_cart, Payment payment, String orderTime, String preferredDeliveryTime,User user, String user_instructions) {
+        Order c_order = new Order(orderId, current_cart, payment.getPayment_Method(), payment, orderTime, preferredDeliveryTime, user, user_instructions);
         return c_order;
     }
 
     public void makeReview(Item current_item, User current_user, String comment, int rate) {
-        Review review = new Review();
+        ArrayList<Review> nReviews = current_item.getReviews();
+        int size = nReviews.size();
         LocalDate date = LocalDate.now();
         String New_Date = date.toString();
-        review.setRating(rate);
-        review.setComment(comment);
-        review.setUser_id(current_user.getId());
-        review.setRating(rate);
-        review.setDate(New_Date);
-        current_item.setReviews(review);
+        for (int i = 0; i < size; i++) {
+            if (nReviews.get(i) == null) {
+                nReviews.get(i).setRating(rate);
+                nReviews.get(i).setComment(comment);
+                nReviews.get(i).setUser_id(current_user.getId());
+                nReviews.get(i).setDate(New_Date);
+            }
+        }
+        //current_item.setReviews(nReviews);
     }
 
     public void makeReview(Restaurant current_rest, User current_user, String comment, int rate) {
-        Review review = new Review();
+        ArrayList<Review> nReviews = current_rest.getReviews();
+        int size = nReviews.size();
         LocalDate date = LocalDate.now();
         String New_Date = date.toString();
-        review.setRating(rate);
-        review.setComment(comment);
-        review.setUser_id(current_user.getId());
-        review.setRating(rate);
-        review.setDate(New_Date);
-        current_rest.setReviews(review);
+        for (int i = 0; i < size; i++) {
+            if (nReviews.get(i) == null) {
+                nReviews.get(i).setRating(rate);
+                nReviews.get(i).setComment(comment);
+                nReviews.get(i).setUser_id(current_user.getId());
+                nReviews.get(i).setDate(New_Date);
+            }
+        }
+        //current_rest.setReviews(nReviews);
     }
 
     public void makeReview(Order current_order, User current_user, String comment, int rate) {
-        Review review = new Review();
+        Review review = current_order.getReview();
         LocalDate date = LocalDate.now();
         String New_Date = date.toString();
         review.setRating(rate);
         review.setComment(comment);
         review.setUser_id(current_user.getId());
         review.setRating(rate);
-        review.setDate(New_Date);
         current_order.setReview(review);
     }
 
@@ -82,14 +92,14 @@ public class Customer extends User {
         current_cart.setItems(nItems);
     }
 
-    public Payment choosePaymentMethod(CreditCard creditCard, User current_user, Cart current_cart) {
+    public Payment choosePaymentMethod(Creditcard CC, User current_user, Cart current_cart) {
         Payment payment = new Payment();
         LocalDate date = LocalDate.now();
         String New_Date = date.toString();
         payment.setPayment_Method("credit card");
         payment.setPayment_Date(New_Date);
         payment.setUser(current_user);
-        payment.Pay(current_cart.getTotalPrice(), creditCard);
+        payment.Pay(current_cart.getTotalPrice(), payment);
         return payment;
     }
 
@@ -100,7 +110,7 @@ public class Customer extends User {
         payment.setPayment_Method("wallet");
         payment.setPayment_Date(New_Date);
         payment.setUser(current_user);
-        payment.Pay(current_cart.getTotalPrice(), wallet);
+        payment.Pay(current_cart.getTotalPrice(), payment);
         return payment;
     }
 
@@ -111,16 +121,11 @@ public class Customer extends User {
         payment.setPayment_Method("cash");
         payment.setPayment_Date(New_Date);
         payment.setUser(current_user);
+        payment.Pay(current_cart.getTotalPrice(), payment);
         return payment;
-    }
-
-    public void cancelOrder(Order current_order, User user) throws NotAdminException {
-        current_order.setOrderStatus("Cancelled", user);
     }
 
     public String getOrderStatus(Order current_order) {
         return current_order.getOrderStatus();
     }
-
-
 }

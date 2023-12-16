@@ -1,2 +1,2 @@
-0,50,0,Wallet,0,Delivered,17:13 14/DEC/2023,18:30,0,Call Before Delivery,0,1,0
-1,30,1,Wallet,0,Delivered,18:45 15/DEC/2023,19:30,0,Call Before Delivery,1,2,0,1
+0,Wallet,0,Preparing,15:23,16:30 16/Dec/2023,0,Call Before Delivery,0,0
+1,Credit,0,Delivering,17:57,18:30 07/Oct/2023,1,Call Before Delivery,1,0

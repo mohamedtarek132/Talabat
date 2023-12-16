@@ -85,10 +85,10 @@ public class Order {
         return orders;
     }
 
-    public static void setOrders(int index, Cart cart, String paymentMethod,
+    public static void setOrders(int index, String paymentMethod,
                                  Payment payment, String orderStatus, String orderTime,
                                  String preferredDeliveryTime, User user, String userInstructions,
-                                 Review review) {
+                                 Review review, Cart cart) {
         orders.add(new Order(index, cart, paymentMethod, payment,
                 preferredDeliveryTime, orderTime, user, userInstructions));
         orders.get(index).orderStatus = orderStatus;

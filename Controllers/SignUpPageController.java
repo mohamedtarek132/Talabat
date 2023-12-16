@@ -6,22 +6,15 @@ import Talabat.Classes.User;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpPageController implements Initializable {
-    private final User user = new Customer();
     @FXML
     private TextField email;
     @FXML
@@ -56,6 +49,7 @@ public class SignUpPageController implements Initializable {
     private Text tying;
     @FXML
     private ChoiceBox<String> genderChoiceBox;
+    private User user = new Customer();
 
     @FXML
     public void signUp(ActionEvent event) {
@@ -63,13 +57,10 @@ public class SignUpPageController implements Initializable {
         long phoneNumber1 = 0;
         try {
             user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
-                    phoneNumber.getText(), country.getText(), address.getText(), true);
-            switchToMainMenu(event);
-            UserInformationPageController.setUser(user);
+                    phoneNumber.getText(), country.getText(), address.getText());
+            tying.setOpacity(1);
         } catch (SignUpException signUpException) {
             exception = signUpException.getMessage();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         if (exception.contains("first name")) {
             firstNameEmptyField.setOpacity(1);
@@ -136,21 +127,7 @@ public class SignUpPageController implements Initializable {
         genderChoiceBox.getItems().addAll("Male", "Female");
     }
 
-    public void switchToMainMenu(ActionEvent ae) throws IOException {
-        Stage stage;
-        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/MainMenu.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    public void switchTo(ActionEvent ae) {
 
-    public void switchToSignIn(ActionEvent ae) throws IOException {
-        Stage stage;
-        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/SignIn.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }

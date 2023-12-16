@@ -49,19 +49,23 @@ public class hell extends Application {
             Review[] reviews = new Review[2];
             reviews[0] = new Review();
             reviews[0].setUser_id(0);
-            reviews[0].setComment("Very Good");
+            reviews[0].setComment("Amazing");
             reviews[0].setDate("14/DEC/2023");
             reviews[0].setRating(4);
             reviews[1] = new Review();
             reviews[1].setUser_id(0);
-            reviews[1].setComment("Very Bad");
+            reviews[1].setComment("Not Satisfying");
             reviews[1].setDate("15/DEC/2023");
             reviews[1].setRating(2);
 
-            Item[] items = new Item[3];
-            items[0] = new Item("ChickenShawerma", "0", "Chicken Shawerma Wrap", 75, "Sandwich");
-            items[1] = new Item("GrilledChicken", "1", "Grilled Chicken with Rice", 150, "Grills");
-            items[2] = new Item("Koshari", "2", "Koshari Large", 40, "Koshari");
+            ArrayList<Item> items = new ArrayList<>();
+            items.add( new Item("ChickenShawerma", "0", "Chicken Shawerma Wrap", 75, "Sandwich"));
+            items.add( new Item("GrilledChicken", "1", "Grilled Chicken with Rice", 150, "Grills"));
+            items.add( new Item("Koshari", "2", "Koshari Large", 40, "Koshari"));
+
+            Payment[] payments = new Payment[1];
+            payments[0] = new Payment();
+            payments[0].setTransaction_id("0");
 
             file = new File("C:\\Users\\Anyone\\Documents\\Talabat-main\\Data\\restaurantInfo.txt");
             scanner = new Scanner(file);
@@ -78,7 +82,7 @@ public class hell extends Application {
                 }
 
                 for(int idx = 0; idx < numberOfItems; idx++) {
-                    restaurantMenu.add(items[Integer.parseInt(data[idx + numberOfReviews + 10])]);
+                    restaurantMenu.add(items.get(Integer.parseInt(data[idx + numberOfReviews + 10])));
                 }
 
                 Restaurant.setRestaurants(Integer.parseInt(data[0]), data[1], data[2],
@@ -94,6 +98,30 @@ public class hell extends Application {
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
                 Restaurant.setRestaurantsAddresses(Integer.parseInt(data[0]),data[1]);
+                i++;
+            }
+            scanner.close();
+
+            Cart[] carts = new Cart[1];
+            carts[0] = new Cart();
+            carts[0].setCartId(0);
+            carts[0].setRestaurant(Restaurant.getRestaurants().get(0));
+            carts[0].setItems(items);
+            carts[0].setTotalPrice(100);
+            carts[0].setNumberOfItems(2);
+
+            file = new File("C:\\Users\\Anyone\\Documents\\Talabat-main\\Data\\orderInfo.txt");
+            scanner = new Scanner(file);
+            i = 0;
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                Payment payment = payments[0];//Payment.getPayments().get(Integer.parseInt(data[2]));
+                User user = User.getUsers().get(Integer.parseInt(data[6]));
+                Review review = reviews[0];//Review.getReviews().get(Integer.parseInt(data[8]));
+                Cart cart = carts[0];//Cart.getCarts().get(Integer.parseInt(data[9]));
+
+                Order.setOrders(Integer.parseInt(data[0]), data[1], payment, data[3], data[4], data[5],
+                        user, data[7], review, cart);
                 i++;
             }
             scanner.close();
