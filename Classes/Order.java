@@ -2,29 +2,35 @@ package Talabat.Classes;
 
 import Talabat.Exceptions.NotAdminException;
 
-public class Order {
+import java.util.ArrayList;
 
+public class Order {
+    private final int orderID;
     private final Cart cart;
     private final String paymentMethod;
     private final Payment payment;
+    private String orderStatus;
+    private final String orderTime;
     private final String preferredDeliveryTime;
     private final User user;
     private final String userInstructions;
-    private String orderStatus;
-    private String orderTime;
     private Review review;
-    public Order(Cart cart, String paymentMethod, Payment payment, String preferredDeliveryTime,
-                 User user, String userInstructions) {
+    private static ArrayList<Order> orders = new ArrayList<>();
+
+    public Order(int orderID, Cart cart, String paymentMethod, Payment payment, String orderTime,
+                 String preferredDeliveryTime, User user, String userInstructions) {
+        this.orderID = orderID;
         this.cart = cart;
         this.paymentMethod = paymentMethod;
         this.payment = payment;
+        this.orderTime = orderTime;
         this.preferredDeliveryTime = preferredDeliveryTime;
         this.user = user;
         this.userInstructions = userInstructions;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public int getOrderID() {
+        return orderID;
     }
 
     public Cart getCart() {
@@ -35,6 +41,9 @@ public class Order {
         return paymentMethod;
     }
 
+    public Payment getPayment() {
+        return payment;
+    }
 
     public String getOrderStatus() {
         return orderStatus;
@@ -50,14 +59,6 @@ public class Order {
 
     public String getOrderTime() {
         return orderTime;
-    }
-
-    public void setOrderTime(String orderTime, User user) throws NotAdminException {
-        if (user instanceof Admin) {
-            this.orderTime = orderTime;
-        } else {
-            throw new NotAdminException();
-        }
     }
 
     public String getPreferredDeliveryTime() {
@@ -78,5 +79,19 @@ public class Order {
 
     public void setReview(Review review) {
         this.review = review;
+    }
+
+    public static ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public static void setOrders(int index, Cart cart, String paymentMethod,
+                                 Payment payment, String orderStatus, String orderTime,
+                                 String preferredDeliveryTime, User user, String userInstructions,
+                                 Review review) {
+        orders.add(new Order(index, cart, paymentMethod, payment,
+                preferredDeliveryTime, orderTime, user, userInstructions));
+        orders.get(index).orderStatus = orderStatus;
+        orders.get(index).review = review;
     }
 }
