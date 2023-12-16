@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_fx.Controller">
+   <children>
+      <Button layoutX="14.0" layoutY="72.0" mnemonicParsing="false" onAction="#switchToRestaurantScene" text="Restaurants">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Label layoutX="256.0" layoutY="7.0" text="Welcome to Talabat">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="174.0" mnemonicParsing="false" onAction="#switchToOrderScene" prefHeight="66.0" prefWidth="194.0" text="Order">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="471.0" mnemonicParsing="false" onAction="#switchToUserInfoScene" prefHeight="66.0" prefWidth="194.0" text="User Info">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#switchToCartScene" prefHeight="66.0" prefWidth="194.0" text="Cart">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="675.0" layoutY="8.0" mnemonicParsing="false" onAction="#SwitchTOSighInPage" text="Sign Out">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Line endX="699.0" layoutX="101.0" layoutY="60.0" startX="-101.0" />
+      <Line endX="433.1225891113281" layoutX="58.0" layoutY="328.0" rotate="90.0" startX="-100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff871d" height="528.0" layoutX="225.0" layoutY="59.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="561.0" />
+      <ImageView fitHeight="216.0" fitWidth="367.0" layoutX="322.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Talabat.jpeg" />
+         </image>
+      </ImageView>
+      <Button layoutX="14.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchToWalletScene" prefHeight="66.0" prefWidth="194.0" text="Wallet">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
