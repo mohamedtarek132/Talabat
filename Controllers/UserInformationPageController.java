@@ -224,24 +224,101 @@ public class UserInformationPageController implements Initializable {
     }
 
     public void removeAddress(ActionEvent event) {
-        editableAddress.setVisible(true);
-        confirm.setVisible(true);
         areYouSurePage.setVisible(true);
         text1.setVisible(true);
         text2.setVisible(true);
         yesButton.setVisible(true);
         noButton.setVisible(true);
         text2.setText("this address?");
+        boolean value = false;
+        email.setEditable(value);
+        password.setEditable(value);
+        phoneNumber.setEditable(value);
+        country.setEditable(value);
+        firstName.setEditable(value);
+        lastName.setEditable(value);
+        yesButton.setOnAction(e -> {
+            if(user.getAddress().size() >1){
+            for (String address1: user.getAddress()){
+            if (address1.equals(address.getValue())){
+                user.getAddress().remove(address1);
+            }
+        }
+            reset(e);}});
     }
 
     public void removeCreditCard(ActionEvent event) {
-        editableAddress.setVisible(true);
-        confirm.setVisible(true);
         areYouSurePage.setVisible(true);
         text1.setVisible(true);
         text2.setVisible(true);
         yesButton.setVisible(true);
         noButton.setVisible(true);
         text2.setText("this credit card?");
+
+        boolean value = false;
+        email.setEditable(value);
+        password.setEditable(value);
+        phoneNumber.setEditable(value);
+        country.setEditable(value);
+        firstName.setEditable(value);
+        lastName.setEditable(value);
+        System.out.println("whyyyyy");
+        yesButton.setOnAction(e -> {
+            if (user.getCreditCards().size() > 1){
+            for (CreditCard cardNumber:user.getCreditCards()) {
+                if(cardNumber.getCardNumber().equals(creditCard.getValue())){
+                    user.getCreditCards().remove(cardNumber);
+                }
+            }
+            reset(e);}});
+    }
+    public void removeCreditCard1(ActionEvent event){
+        for (CreditCard cardNumber:user.getCreditCards()) {
+            if(cardNumber.getCardNumber().equals(creditCard.getValue())){
+                user.getCreditCards().remove(cardNumber);
+            }
+        }
+        reset(event);
+    }
+    public void removeAddress1(ActionEvent event){
+        for (String address1: user.getAddress()){
+            if (address1.equals(address.getValue())){
+                user.getAddress().remove(address1);
+            }
+        }
+        reset(event);
+    }
+    public void reset(ActionEvent event){
+        email.setText(user.getEmail());
+        password.setText(user.getPassword());
+        phoneNumber.setText(Long.toString(user.getPhoneNumber()));
+        country.setText(user.getCountry());
+        firstName.setText(user.getFirstName());
+        lastName.setText(user.getLastName());
+        genderChoiceBox.setValue(user.getGender());
+        address.getItems().clear();
+        if(!user.getAddress().isEmpty()){
+        address.setValue(user.getAddress().get(0));
+        }
+        for (String addresses : user.getAddress()) {
+            System.out.println(addresses);
+            address.getItems().add(addresses);
+        }
+        creditCard.getItems().clear();
+        if (!user.getCreditCards().isEmpty()) {
+            creditCard.setValue(user.getCreditCards().get(0).getCardNumber());
+        }
+        for (CreditCard cardNumber : user.getCreditCards()) {
+            creditCard.getItems().add(cardNumber.getCardNumber());
+            System.out.println(cardNumber.getCardNumber());
+            System.out.println(1);
+        }
+        editableAddress.setVisible(false);
+        confirm.setVisible(false);
+        areYouSurePage.setVisible(false);
+        text1.setVisible(false);
+        text2.setVisible(false);
+        yesButton.setVisible(false);
+        noButton.setVisible(false);
     }
 }
