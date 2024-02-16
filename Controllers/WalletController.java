@@ -1,39 +1,46 @@
 package Talabat.Controllers;
+
 import Talabat.Classes.Payment;
 import Talabat.Classes.Wallet;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WalletController{
+public class WalletController {
+    Double baLance;
     @FXML
-   private TextField amountmonyTextfield;
+    private TextField amountmonyTextfield;
     @FXML
-   private Label balancelabel;
+    private Label balancelabel;
     @FXML
-   private ListView<String>mylistview;
+    private ListView<String> mylistview;
     @FXML
     private Label Errorlabel;
-    private List<Payment>TransactionsList=new ArrayList<>();
-    Double baLance;
-    private Wallet wallet = new Wallet();
+    private final List<Payment> TransactionsList = new ArrayList<>();
+    private final Wallet wallet = new Wallet();
+
     public void Addmoney(ActionEvent event) {
         try {
 
             String amountstr = amountmonyTextfield.getText();
             double amount = Double.parseDouble(amountmonyTextfield.getText());
-            if(amount>0) {
+            if (amount > 0) {
                 wallet.addFunds(amount);
                 String balance = String.valueOf(getbalance());
                 Errorlabel.setText("");
                 balancelabel.setText("EGB\t" + balance);
-            }
-            else {
+            } else {
                 Errorlabel.setText("Please Enter a valid positive amount");
             }
 
@@ -44,7 +51,7 @@ public class WalletController{
     }
 
 
-    public void Transactions(ActionEvent o){
+    public void Transactions(ActionEvent o) {
         List<Payment> transactionList = wallet.getTransaction();
         mylistview.getItems().clear();
 
@@ -53,8 +60,16 @@ public class WalletController{
         }
     }
 
-    public double getbalance()
-    {
+    public double getbalance() {
         return wallet.getBalance();
+    }
+
+    public void switchToMainMenu(ActionEvent ae) throws IOException {
+        Stage stage;
+        stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/MainMenu.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

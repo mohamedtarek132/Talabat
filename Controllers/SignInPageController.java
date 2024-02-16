@@ -32,9 +32,9 @@ public class SignInPageController {
             user = User.signIn(email.getText(), password.getText());
             errorMessage.setOpacity(0);
             UserInformationPageController.setUser(user);
-            if(user instanceof Customer){
+            if (user instanceof Customer) {
                 switchToMainMenu(event);
-            }else if(user instanceof Admin){
+            } else if (user instanceof Admin) {
                 System.out.println(1);
                 switchToAdminDashboard(event);
             }
@@ -62,7 +62,9 @@ public class SignInPageController {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToAdminDashboard(ActionEvent ae) throws IOException {
+        System.out.println(getClass().getResource("../Fxmls/AdminDashboard.fxml"));
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/AdminDashboard.fxml"));

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.PreviousOrdersController">
+    <children>
+        <Label fx:id="ordersPageTitle" alignment="CENTER" layoutX="250.0" layoutY="10.0" prefHeight="50.0" prefWidth="300.0" text="Previous Orders">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <Label fx:id="orderReviewLabel" layoutX="447.0" layoutY="148.0" text="Review">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ListView fx:id="itemsListView" layoutX="447.0" layoutY="308.0" prefHeight="253.0" prefWidth="339.0" />
+        <Label fx:id="itemsListViewLabel" layoutX="447.0" layoutY="262.0" text="Items">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ListView fx:id="ordersListView" layoutX="14.0" layoutY="85.0" prefHeight="476.0" prefWidth="411.0" />
+        <TextArea fx:id="orderReview" layoutX="447.0" layoutY="183.0" prefHeight="76.0" prefWidth="339.0" />
+        <Button layoutX="21.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="40.0" prefWidth="122.0" text="Back">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

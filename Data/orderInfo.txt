@@ -1,0 +1,2 @@
+0,Wallet,0,Preparing,15:23,16:30 16/Dec/2023,0,Call Before Delivery,0,0
+1,Credit,0,Delivering,17:57,18:30 07/Oct/2023,1,Call Before Delivery,1,0

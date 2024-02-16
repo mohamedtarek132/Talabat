@@ -24,7 +24,8 @@ public class MainMenuController {
 //    }
 
     public void switchToRestaurantScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("RestaurantScene.fxml"));
+        System.out.println(getClass().getResource("../Fxmls/ListOfRestaurants.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/ListOfRestaurants.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
@@ -32,7 +33,7 @@ public class MainMenuController {
     }
 
     public void switchToOrderScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("OrderScene.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/PreviousOrders.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
@@ -64,7 +65,7 @@ public class MainMenuController {
     }
 
     public void switchToWalletScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("WalletScene.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Fxmls/Wallet.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);

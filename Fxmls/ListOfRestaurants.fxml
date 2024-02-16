@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.ListOfRestaurantsController">
+    <children>
+        <Label fx:id="restaurantsPageTitle" alignment="CENTER" layoutX="275.0" layoutY="10.0" prefHeight="50.0" prefWidth="250.0" text="Restaurants">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <ListView fx:id="restaurantsListView" layoutX="20.0" layoutY="100.0" prefHeight="267.0" prefWidth="763.0" />
+        <ChoiceBox fx:id="restaurantAddresses" layoutX="575.0" layoutY="500.0" prefHeight="31.0" prefWidth="208.0" />
+        <Label fx:id="restaurantAddressesLabel" layoutX="469.0" layoutY="498.0" text="Address">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <ListView fx:id="reviewsListView" layoutX="20.0" layoutY="434.0" prefHeight="100.0" prefWidth="432.0" />
+        <Label fx:id="reviewsListViewLabel" layoutX="20.0" layoutY="390.0" text="Reviews">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Button fx:id="toMenuButton" layoutX="647.0" layoutY="434.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="136.0" text="Go to Menu">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="searchForItemButton" layoutX="469.0" layoutY="434.0" mnemonicParsing="false" onAction="#goToSearchForItem" prefHeight="44.0" prefWidth="161.0" text="Search for Item">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+      <Button layoutX="20.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="40.0" prefWidth="122.0" text="Back">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

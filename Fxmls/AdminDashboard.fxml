@@ -15,20 +15,26 @@
                 <Font size="22.0"/>
             </font>
         </Label>
-        <Button layoutX="224.0" layoutY="184.0" mnemonicParsing="false" onAction="#switchtoaddres" prefHeight="31.0"
-                prefWidth="150.0" text="Add restaurant">
+        <Button layoutX="210.0" layoutY="184.0" mnemonicParsing="false" onAction="#switchtoaddres" prefHeight="31.0"
+                prefWidth="179.0" text="Add Restaurant">
             <font>
                 <Font size="15.0"/>
             </font>
         </Button>
-        <Button layoutX="224.0" layoutY="131.0" mnemonicParsing="false" onAction='#switchtodisres' prefHeight="31.0"
-                prefWidth="150.0" text="Display Restaurants">
+        <Button layoutX="210.0" layoutY="133.0" mnemonicParsing="false" onAction="#switchtodisres" prefHeight="31.0"
+                prefWidth="179.0" text="Display Restaurants">
             <font>
                 <Font size="15.0"/>
             </font>
         </Button>
-        <Button fx:id="logout" layoutX="224.0" layoutY="241.0" mnemonicParsing="false" onAction="#logout"
-                prefHeight="31.0" prefWidth="150.0" text="Log out">
+        <Button fx:id="logout" layoutX="240.0" layoutY="283.0" mnemonicParsing="false" onAction="#logout"
+                prefHeight="31.0" prefWidth="119.0" text="Log out">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
+        <Button layoutX="210.0" layoutY="230.0" mnemonicParsing="false" onAction="#editRestaurantMenu" prefHeight="31.0"
+                prefWidth="179.0" text="Edit Restaurnat Menu">
             <font>
                 <Font size="15.0"/>
             </font>

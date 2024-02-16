@@ -160,10 +160,10 @@ public class UserInformationPageController implements Initializable {
         String exception = "";
         long phoneNumber1 = 0;
         try {
-            if(addAddressChecker){
+            if (addAddressChecker) {
                 user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
-                    phoneNumber.getText(), country.getText(), editableAddress.getText(), false);
-            }else{
+                        phoneNumber.getText(), country.getText(), editableAddress.getText(), false);
+            } else {
                 user.signUp(firstName.getText(), lastName.getText(), email.getText(), password.getText(), genderChoiceBox.getValue(),
                         phoneNumber.getText(), country.getText(), address.getValue(), false);
             }
@@ -271,7 +271,7 @@ public class UserInformationPageController implements Initializable {
 
     public void removeCreditCard1(ActionEvent event) {
         int index = 0;
-        for(int i = 0; i < user.getCreditCards().size(); i++) {
+        for (int i = 0; i < user.getCreditCards().size(); i++) {
             if (user.getCreditCards().get(i).getCardNumber().equals(creditCard.getValue())) {
                 index = i;
                 break;
@@ -284,11 +284,11 @@ public class UserInformationPageController implements Initializable {
 
     public void removeAddress1(ActionEvent event) {
         int index = 0;
-        for(int i = 0; i < user.getAddress().size(); i++) {
-                if (user.getAddress().get(i).equals(address.getValue())) {
-                    index = i;
-                    break;
-                }
+        for (int i = 0; i < user.getAddress().size(); i++) {
+            if (user.getAddress().get(i).equals(address.getValue())) {
+                index = i;
+                break;
+            }
 
         }
         user.getAddress().remove(index);

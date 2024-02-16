@@ -7,9 +7,9 @@ import Talabat.Exceptions.NotAdminException;
 
 
 public class Admin extends User {
+    private final Scanner input = new Scanner(System.in);
     User user;
     private ArrayList<Restaurant> restaurant = new ArrayList<>();
-    private final Scanner input = new Scanner(System.in);
 
     public Admin() {
     }
@@ -35,9 +35,7 @@ public class Admin extends User {
     }
 
 
-    private void handingInputs() {
 
-    }
 
 
     public void deleteRestaurant(int restaurantIndex) {

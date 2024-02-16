@@ -13,7 +13,7 @@ public class Customer extends User {
     }
 
     public Order makeOrder(Cart current_cart, Payment payment, String orderTime, User user, String user_instructions) {
-        Order c_order = new Order(current_cart, payment.getPayment_Method(), payment, orderTime, user, user_instructions);
+        Order c_order = new Order(Order.getOrders().size() - 1, current_cart, payment.getPayment_Method(), payment, orderTime, "10", user, user_instructions);
         return c_order;
     }
 
@@ -38,7 +38,7 @@ public class Customer extends User {
         review.setUser_id(current_user.getId());
         review.setRating(rate);
         review.setDate(New_Date);
-        current_rest.setReviews(review);
+//        current_rest.setReviews(review);
     }
 
     public void makeReview(Order current_order, User current_user, String comment, int rate) {
