@@ -24,7 +24,7 @@ public class MainMenuController {
 //    }
 
     public void switchToRestaurantScene(ActionEvent event) throws IOException {
-        System.out.println(getClass().getResource("../Fxmls/ListOfRestaurants.fxml"));
+        System.out.println(getClass().getResource("Muslim_Qibla/Fxmls/ListOfRestaurants.fxml"));
         root = FXMLLoader.load(getClass().getResource("../Fxmls/ListOfRestaurants.fxml"));
         stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);

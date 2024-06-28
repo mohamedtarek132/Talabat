@@ -64,7 +64,7 @@ public class SignInPageController {
     }
 
     public void switchToAdminDashboard(ActionEvent ae) throws IOException {
-        System.out.println(getClass().getResource("../Fxmls/AdminDashboard.fxml"));
+        System.out.println(getClass().getResource("Muslim_Qibla/Fxmls/AdminDashboard.fxml"));
         Stage stage;
         stage = (Stage) ((Node) ae.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../Fxmls/AdminDashboard.fxml"));
