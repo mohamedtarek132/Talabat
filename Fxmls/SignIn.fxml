@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -7,43 +8,53 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="Talabat.Controllers.SignInPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" style="-fx-background-color: #336AD5;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.SignInPageController">
     <children>
-        <TextField fx:id="email" layoutX="336.0" layoutY="209.0" prefHeight="25.0" prefWidth="220.0"/>
-        <Text layoutX="202.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+        <TextField fx:id="email" layoutX="480.0" layoutY="299.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
+         <font>
+            <Font name="Inter Regular" size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets></TextField>
+        <Text fill="#d1a476" layoutX="480.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
             <font>
-                <Font size="24.0"/>
+                <Font name="Inter Bold" size="32.0" />
             </font>
         </Text>
-        <Text layoutX="202.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+        <Text fill="#d1a476" layoutX="480.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
             <font>
-                <Font size="24.0"/>
+                <Font name="Inter Bold" size="32.0" />
             </font>
         </Text>
-        <Text layoutX="354.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+        <Text fill="WHITE" layoutX="620.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
             <font>
-                <Font size="30.0"/>
+                <Font name="Inter Bold" size="60.0" />
             </font>
         </Text>
-        <Button layoutX="252.0" layoutY="392.0" mnemonicParsing="false" onAction="#signIn" text="Sign In ">
+        <Button alignment="CENTER" layoutX="480.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchToSignUpPage" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" stylesheets="@../CssFiles/button.css" text="Register" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font size="18.0"/>
+                <Font name="Inter Bold" size="32.0" />
             </font>
         </Button>
-        <Button layoutX="484.0" layoutY="392.0" mnemonicParsing="false" onAction="#switchToSignUpPage" text="Sign Up">
+        <Button alignment="CENTER" layoutX="760.0" layoutY="613.0" mnemonicParsing="false" onAction="#signIn" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #D1A476; -fx-text-fill: black; -fx-border-color: transparent;" stylesheets="@../CssFiles/button.css" text="Sign In" textAlignment="CENTER">
             <font>
-                <Font size="18.0"/>
+                <Font name="Inter Bold" size="32.0" />
             </font>
         </Button>
-        <PasswordField fx:id="password" layoutX="336.0" layoutY="286.0" prefHeight="25.0" prefWidth="220.0"/>
-        <Text fx:id="errorMessage" fill="#ff001e" layoutX="336.0" layoutY="334.0" opacity="0.0" strokeType="OUTSIDE"
-              strokeWidth="0.0" text="Email or password is wrong!">
+        <PasswordField fx:id="password" layoutX="480.0" layoutY="486.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
+         <font>
+            <Font name="Inter Regular" size="24.0" />
+         </font></PasswordField>
+        <Text fx:id="errorMessage" fill="#ff001e" layoutX="565.0" layoutY="591.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email or password is wrong!">
             <font>
-                <Font size="14.0"/>
+                <Font name="Inter Regular" size="24.0" />
             </font>
         </Text>
+      <Text fill="#d1a476" layoutX="64.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Otlobly Shokran" textOrigin="CENTER">
+         <font>
+            <Font name="Inter Bold" size="64.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
