@@ -5,56 +5,69 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" style="-fx-background-color: #336AD5;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.SignInPageController">
-    <children>
-        <TextField fx:id="email" layoutX="480.0" layoutY="299.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
-         <font>
-            <Font name="Inter Regular" size="24.0" />
-         </font>
-         <opaqueInsets>
-            <Insets left="10.0" />
-         </opaqueInsets></TextField>
-        <Text fill="#d1a476" layoutX="480.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
-            <font>
-                <Font name="Inter Bold" size="32.0" />
-            </font>
-        </Text>
-        <Text fill="#d1a476" layoutX="480.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-            <font>
-                <Font name="Inter Bold" size="32.0" />
-            </font>
-        </Text>
-        <Text fill="WHITE" layoutX="620.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
-            <font>
-                <Font name="Inter Bold" size="60.0" />
-            </font>
-        </Text>
-        <Button alignment="CENTER" layoutX="480.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchToSignUpPage" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" stylesheets="@../CssFiles/button.css" text="Register" textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font name="Inter Bold" size="32.0" />
-            </font>
-        </Button>
-        <Button alignment="CENTER" layoutX="760.0" layoutY="613.0" mnemonicParsing="false" onAction="#signIn" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #D1A476; -fx-text-fill: black; -fx-border-color: transparent;" stylesheets="@../CssFiles/button.css" text="Sign In" textAlignment="CENTER">
-            <font>
-                <Font name="Inter Bold" size="32.0" />
-            </font>
-        </Button>
-        <PasswordField fx:id="password" layoutX="480.0" layoutY="486.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
-         <font>
-            <Font name="Inter Regular" size="24.0" />
-         </font></PasswordField>
-        <Text fx:id="errorMessage" fill="#ff001e" layoutX="565.0" layoutY="591.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email or password is wrong!">
-            <font>
-                <Font name="Inter Regular" size="24.0" />
-            </font>
-        </Text>
-      <Text fill="#d1a476" layoutX="64.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Otlobly Shokran" textOrigin="CENTER">
-         <font>
-            <Font name="Inter Bold" size="64.0" />
-         </font>
-      </Text>
-    </children>
-</AnchorPane>
+
+<Pane prefHeight="800.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Talabat.Controllers.SignInPageController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" style="-fx-background-color: #336AD5;">
+          <children>
+            <Ellipse centerY="700.0" fill="WHITE" layoutX="1889.0" layoutY="-77.0" opacity="0.5" radiusX="1000.0" radiusY="1000.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Ellipse centerX="700.0" fill="#336ad5" layoutX="1225.0" layoutY="383.0" radiusX="900.0" radiusY="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Ellipse centerY="700.0" fill="WHITE" layoutX="-414.0" layoutY="-27.0" opacity="0.5" radiusX="1000.0" radiusY="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Ellipse fill="#336ad5" layoutX="-568.0" layoutY="714.0" radiusX="1100.0" radiusY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+              <TextField fx:id="email" layoutX="480.0" layoutY="299.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
+               <font>
+                  <Font name="Inter Regular" size="24.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+            </TextField>
+              <Text fill="#d1a476" layoutX="480.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                  <font>
+                      <Font name="Inter Bold" size="32.0" />
+                  </font>
+              </Text>
+              <Text fill="#d1a476" layoutX="480.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                  <font>
+                      <Font name="Inter Bold" size="32.0" />
+                  </font>
+              </Text>
+              <Text fill="WHITE" layoutX="620.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+                  <font>
+                      <Font name="Inter Bold" size="60.0" />
+                  </font>
+              </Text>
+              <Button alignment="CENTER" layoutX="480.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchToSignUpPage" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" stylesheets="@../CssFiles/button.css" text="Register" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                      <Font name="Inter Bold" size="32.0" />
+                  </font>
+              </Button>
+              <Button alignment="CENTER" layoutX="760.0" layoutY="613.0" mnemonicParsing="false" onAction="#signIn" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #D1A476; -fx-text-fill: black; -fx-border-color: transparent;" stylesheets="@../CssFiles/button.css" text="Sign In" textAlignment="CENTER">
+                  <font>
+                      <Font name="Inter Bold" size="32.0" />
+                  </font>
+              </Button>
+              <PasswordField fx:id="password" layoutX="480.0" layoutY="486.0" prefHeight="60.0" prefWidth="480.0" stylesheets="@../CssFiles/textField.css">
+               <font>
+                  <Font name="Inter Regular" size="24.0" />
+               </font>
+            </PasswordField>
+              <Text fx:id="errorMessage" fill="#ff001e" layoutX="565.0" layoutY="591.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email or password is wrong!">
+                  <font>
+                      <Font name="Inter Regular" size="24.0" />
+                  </font>
+              </Text>
+            <Text fill="#d1a476" layoutX="64.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Otlobly Shokran" textOrigin="CENTER">
+               <font>
+                  <Font name="Inter Bold" size="64.0" />
+               </font>
+            </Text>
+          </children>
+      </AnchorPane>
+   </children>
+</Pane>
